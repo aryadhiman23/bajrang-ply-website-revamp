@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 const productDetails = {
   1: {
-    name: 'Premium Birch Plywood',
+    name: 'Wigwam E0 Plywood',
     category: 'Plywood',
     price: '₹500-₹800/sqft',
-    image: '/placeholder.svg?height=500&width=600',
+    image: '/images/product-plywood-wigwam.jpg',
     rating: 5,
     reviews: 245,
     description: 'Premium quality birch plywood manufactured with strict quality control. Perfect for high-end furniture and interior applications.',
@@ -42,7 +42,7 @@ const productDetails = {
     name: 'Engineered Plywood',
     category: 'Plywood',
     price: '₹300-₹500/sqft',
-    image: '/placeholder.svg?height=500&width=600',
+    image: '/images/product-plywood-breathe.jpg',
     rating: 4.5,
     reviews: 189,
     description: 'Cost-effective engineered plywood with excellent durability and stability. Ideal for budget-conscious projects.',
@@ -256,8 +256,8 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                   href={`/products/${relatedId}`}
                   className="bg-card rounded-lg overflow-hidden shadow hover:shadow-lg transition"
                 >
-                  <div className="bg-muted h-40">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Related product" className="w-full h-full object-cover" />
+                  <div className="bg-muted h-40 overflow-hidden">
+                    <img src={`/images/product-${relatedId === 1 ? 'plywood-wigwam' : relatedId === 2 ? 'plywood-breathe' : 'laminates-dark'}.jpg`} alt="Related product" className="w-full h-full object-cover hover:scale-105 transition duration-300" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-bold text-foreground hover:text-primary transition">View Related Product</h3>

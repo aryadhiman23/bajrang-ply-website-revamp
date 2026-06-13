@@ -78,39 +78,39 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="mt-20 min-h-screen bg-gradient-to-b from-muted to-background flex items-center">
-        <div className="max-w-7xl mx-auto px-4 w-full py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Premium Plywood & Interior Materials
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8">
-                More Than Just Plywood – Your complete one-stop shop for laminates, veneers, hardware, and decorative interior materials.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-3 bg-primary text-primary-foreground rounded text-lg font-semibold hover:bg-accent transition flex items-center justify-center gap-2">
-                  <Phone size={20} />
-                  Call Now
-                </button>
-                <button className="px-8 py-3 bg-secondary text-secondary-foreground rounded text-lg font-semibold hover:opacity-90 transition flex items-center justify-center gap-2">
-                  <MessageCircle size={20} />
-                  WhatsApp
-                </button>
-                <button className="px-8 py-3 border-2 border-primary text-primary rounded text-lg font-semibold hover:bg-primary hover:text-primary-foreground transition flex items-center justify-center gap-2">
-                  Explore Products
-                  <ChevronRight size={20} />
-                </button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-primary/20 rounded-lg p-8 h-96 flex items-center justify-center">
-                <img
-                  src="/placeholder.svg?height=400&width=500"
-                  alt="Premium plywood and interior materials showcase"
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
+      <section className="mt-20 min-h-screen relative flex items-center overflow-hidden">
+        {/* Full-bleed background image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-luxury-interior.jpg"
+            alt="Luxury interior with premium plywood and laminates"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-foreground/55" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full py-24">
+          <div className="max-w-2xl">
+            <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">More Than Just Plywood</p>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight text-balance">
+              Premium Plywood &amp; Interior Materials
+            </h1>
+            <p className="text-lg text-white/80 mb-10 leading-relaxed">
+              Your complete one-stop shop for laminates, veneers, hardware, charcoal panels and decorative surfaces — all under one roof in Lucknow.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="px-8 py-4 bg-primary text-primary-foreground rounded text-lg font-semibold hover:bg-accent transition flex items-center justify-center gap-2">
+                <Phone size={20} />
+                Call Now
+              </button>
+              <button className="px-8 py-4 bg-white/10 backdrop-blur border border-white/30 text-white rounded text-lg font-semibold hover:bg-white/20 transition flex items-center justify-center gap-2">
+                <MessageCircle size={20} />
+                WhatsApp
+              </button>
+              <a href="#products" className="px-8 py-4 border-2 border-primary text-primary rounded text-lg font-semibold hover:bg-primary hover:text-primary-foreground transition flex items-center justify-center gap-2">
+                Explore Products
+                <ChevronRight size={20} />
+              </a>
             </div>
           </div>
         </div>
@@ -150,12 +150,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: 'Plywood', image: '/placeholder.svg?height=300&width=400', desc: 'Quality plywood for all applications' },
-              { name: 'Laminates', image: '/placeholder.svg?height=300&width=400', desc: 'Wide range of finishes & colors' },
-              { name: 'Veneers', image: '/placeholder.svg?height=300&width=400', desc: 'Premium wood veneers' },
-              { name: 'Hardware', image: '/placeholder.svg?height=300&width=400', desc: 'Complete hardware solutions' },
-              { name: 'Charcoal Panels', image: '/placeholder.svg?height=300&width=400', desc: 'Decorative & functional panels' },
-              { name: 'Corian Surfaces', image: '/placeholder.svg?height=300&width=400', desc: 'Premium decorative surfaces' },
+              { name: 'Plywood', image: '/images/product-plywood-breathe.jpg', desc: 'E0 grade, calibrated, termite & borer proof plywood' },
+              { name: 'Laminates', image: '/images/product-laminates-dark.jpg', desc: 'Matte, gloss & textured — scratch resistant surface collection' },
+              { name: 'Handcraft Laminates', image: '/images/product-laminates-plusetone.jpg', desc: 'Artistic Plusetone laminates — unique designs for walls & furniture' },
+              { name: 'Hardware', image: '/images/product-hardware-locks.jpg', desc: 'Smart locks, hinges & precision-engineered fittings' },
+              { name: 'Charcoal Panels', image: '/images/product-charcoal-panels.jpg', desc: 'Modern walls, luxury impact — premium panels & louvers' },
+              { name: 'Doors & Surfaces', image: '/images/product-doors-entrance.jpg', desc: 'Premium doors for office & home — entrance to elegance' },
             ].map((category, idx) => (
               <Reveal key={idx} direction="up" delay={idx * 100}>
                 <div className="bg-card rounded-lg overflow-hidden shadow hover:shadow-lg transition group cursor-pointer h-full">
@@ -220,17 +220,17 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'Premium Birch Plywood', price: 'Starting ₹500/sqft', rating: 5 },
-              { name: 'Glossy Laminates', price: 'Starting ₹300/sqft', rating: 5 },
-              { name: 'Natural Veneers', price: 'Starting ₹400/sqft', rating: 4.5 },
+              { name: 'Wigwam E0 Plywood', price: 'Starting ₹500/sqft', rating: 5, image: '/images/product-plywood-wigwam.jpg' },
+              { name: 'Thermo Sheet Interiors', price: 'Starting ₹300/sqft', rating: 5, image: '/images/product-thermo-sheet.jpg' },
+              { name: 'Signature Doors', price: 'Starting ₹8,000/door', rating: 5, image: '/images/product-doors-signature.jpg' },
             ].map((product, idx) => (
               <Reveal key={idx} direction={idx === 0 ? 'left' : idx === 2 ? 'right' : 'up'} delay={idx * 100}>
                 <div className="bg-card rounded-lg shadow hover:shadow-lg transition overflow-hidden h-full">
-                  <div className="bg-muted h-48 flex items-center justify-center">
+                  <div className="bg-muted h-56 flex items-center justify-center overflow-hidden">
                     <img
-                      src="/placeholder.svg?height=300&width=400"
+                      src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover hover:scale-105 transition duration-300"
                     />
                   </div>
                   <div className="p-6">
@@ -256,17 +256,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Brand Partners */}
-      <section className="py-20 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Trusted Brand Partners</h2>
-          <p className="text-xl text-muted-foreground mb-12">We deal with leading brands in the industry</p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="bg-card rounded-lg p-8 w-full flex items-center justify-center h-24">
-                <div className="text-muted-foreground font-semibold">Brand {item}</div>
-              </div>
+      {/* Product Showcase Strip */}
+      <section className="py-16 bg-muted overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <Reveal direction="up" className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-foreground mb-3">Our Product Showcase</h2>
+            <p className="text-xl text-muted-foreground">From hardware to surfaces — everything for your dream interior</p>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { img: '/images/product-safe-godrej.jpg', label: 'Godrej Safes' },
+              { img: '/images/product-woodex-louvers.jpg', label: 'WPC Louvers' },
+              { img: '/images/product-laminates-artistic.jpg', label: 'Artistic Laminates' },
+              { img: '/images/product-doors-signature.jpg', label: 'Signature Doors' },
+            ].map((item, idx) => (
+              <Reveal key={idx} direction="zoom" delay={idx * 80}>
+                <div className="relative overflow-hidden rounded-lg h-52 group cursor-pointer shadow">
+                  <img src={item.img} alt={item.label} className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 bg-foreground/60 py-2 px-3">
+                    <p className="text-white text-sm font-semibold text-center">{item.label}</p>
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -282,22 +293,22 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              'Modern Kitchen',
-              'Bedroom Wardrobe',
-              'Office Paneling',
-              'Living Room Interior',
-              'Modular Furniture',
-              'Commercial Setup',
+              { label: 'Modern Kitchen', img: '/images/gallery-01.jpg' },
+              { label: 'Bedroom Wardrobe', img: '/images/gallery-02.jpg' },
+              { label: 'Office Paneling', img: '/images/gallery-03.jpg' },
+              { label: 'Living Room Interior', img: '/images/gallery-04.jpg' },
+              { label: 'Modular Furniture', img: '/images/gallery-05.jpg' },
+              { label: 'Commercial Setup', img: '/images/gallery-06.jpg' },
             ].map((project, idx) => (
               <Reveal key={idx} direction="zoom" delay={idx * 90}>
                 <div className="relative group overflow-hidden rounded-lg h-64 cursor-pointer">
                   <img
-                    src="/placeholder.svg?height=400&width=500"
-                    alt={project}
+                    src={project.img}
+                    alt={project.label}
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-300"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex items-center justify-center">
-                    <h3 className="text-white text-xl font-bold text-center">{project}</h3>
+                    <h3 className="text-white text-xl font-bold text-center">{project.label}</h3>
                   </div>
                 </div>
               </Reveal>

@@ -25,11 +25,11 @@ export default function AboutPage() {
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="bg-primary/20 rounded-lg h-96 flex items-center justify-center">
+                <div className="rounded-lg h-96 overflow-hidden shadow-lg">
                   <img
-                    src="/placeholder.svg?height=400&width=500"
-                    alt="Bajrang Ply facility"
-                    className="w-full h-full object-cover rounded"
+                    src="/images/hero-luxury-interior.jpg"
+                    alt="Bajrang Ply premium showroom"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
@@ -155,13 +155,13 @@ export default function AboutPage() {
             <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Our Team</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { name: 'Rajesh Gupta', role: 'Owner & Founder', desc: 'Leading Bajrang Ply since 2004 with passion for quality' },
-                { name: 'Priya Singh', role: 'Product Manager', desc: 'Expert in sourcing premium materials and managing inventory' },
-                { name: 'Amit Kumar', role: 'Customer Relations', desc: '20 years of experience in customer service excellence' }
+                { name: 'Rajesh Gupta', role: 'Owner & Founder', desc: 'Leading Bajrang Ply since 2004 with passion for quality', initials: 'RG' },
+                { name: 'Priya Singh', role: 'Product Manager', desc: 'Expert in sourcing premium materials and managing inventory', initials: 'PS' },
+                { name: 'Amit Kumar', role: 'Customer Relations', desc: '20 years of experience in customer service excellence', initials: 'AK' }
               ].map((member, idx) => (
                 <div key={idx} className="bg-card rounded-lg shadow p-8 text-center hover:shadow-lg transition">
-                  <div className="w-24 h-24 bg-primary/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <img src="/placeholder.svg?height=100&width=100" alt={member.name} className="w-full h-full object-cover rounded-full" />
+                  <div className="w-24 h-24 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span className="text-primary-foreground text-2xl font-bold">{member.initials}</span>
                   </div>
                   <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
                   <p className="text-primary font-semibold mb-3">{member.role}</p>
