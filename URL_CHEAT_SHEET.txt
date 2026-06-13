@@ -1,0 +1,166 @@
+═══════════════════════════════════════════════════════════════════════════
+                    BAJRANG PLY - URL QUICK REFERENCE
+═══════════════════════════════════════════════════════════════════════════
+
+PUBLIC PAGES (No Login Required)
+────────────────────────────────────────────────────────────────────────────
+Homepage                    http://localhost:3000/
+Products Catalog            http://localhost:3000/products
+Product Detail (Example)    http://localhost:3000/products/1
+About Us                    http://localhost:3000/about
+Gallery / Projects          http://localhost:3000/gallery
+Contact Us                  http://localhost:3000/contact
+
+Scroll Animations on:
+  ✓ Homepage (all sections fade in)
+  ✓ Products page
+  ✓ Gallery
+  ✓ All pages with sections
+
+
+AUTHENTICATION PAGES
+────────────────────────────────────────────────────────────────────────────
+Sign Up (Create Account)    http://localhost:3000/sign-up
+Sign In (Login)             http://localhost:3000/sign-in
+
+Steps to Access Admin:
+  1. Go to /sign-up
+  2. Create account with Name, Email, Password
+  3. Go to /sign-in
+  4. Login with same credentials
+  5. Redirected to /admin automatically
+
+
+ADMIN PANEL (Login Required)
+────────────────────────────────────────────────────────────────────────────
+Admin Dashboard             http://localhost:3000/admin
+  - Overview
+  - Quick actions to add products/articles
+  - User profile
+  - Logout button
+
+Products Management         http://localhost:3000/admin/products
+  - View all products
+  - Edit/Delete buttons
+  - Add New Product button
+
+Add/Edit Product Form       http://localhost:3000/admin/products/new
+  - Product Name
+  - Category selection
+  - Description
+  - Use For
+  - Images
+  - Submit to save to database
+
+Articles Management         http://localhost:3000/admin/articles
+  - View all articles
+  - Edit/Delete buttons
+  - Add New Article button
+  - Published/Draft status
+
+Add/Edit Article Form       http://localhost:3000/admin/articles/new
+  - Article Title
+  - Description
+  - Full Content
+  - Images
+  - Published checkbox
+  - Submit to save to database
+
+
+QUICK FEATURE LOCATIONS
+────────────────────────────────────────────────────────────────────────────
+Sign In Form                /sign-in  →  "Welcome back" card
+Sign Up Form                /sign-up  →  "Create an account" card
+Scroll Animations           /          →  Scroll down to see fade-in effects
+Logo                        Header    →  Bajrang Ply logo visible on all pages
+Color Palette               Entire Site → Light Bronze (#D4A373) as primary color
+Admin Features              /admin/*  →  Protected, requires login
+
+
+DATABASE OPERATIONS
+────────────────────────────────────────────────────────────────────────────
+Products:
+  - Create (Add at /admin/products/new)
+  - Read (View at /admin/products)
+  - Update (Edit button on products list)
+  - Delete (Delete button on products list)
+
+Articles:
+  - Create (Add at /admin/articles/new)
+  - Read (View at /admin/articles)
+  - Update (Edit button on articles list)
+  - Delete (Delete button on articles list)
+
+All data saved to Neon PostgreSQL
+User-scoped (only see your own products/articles)
+
+
+TESTING WORKFLOW
+────────────────────────────────────────────────────────────────────────────
+1. View homepage:       http://localhost:3000/
+2. Scroll to see animations
+3. Sign up:             http://localhost:3000/sign-up
+4. Sign in:             http://localhost:3000/sign-in
+5. Go to admin:         http://localhost:3000/admin
+6. Add product:         http://localhost:3000/admin/products/new
+7. View products:       http://localhost:3000/admin/products
+8. Add article:         http://localhost:3000/admin/articles/new
+9. View articles:       http://localhost:3000/admin/articles
+10. Logout from admin panel
+
+
+ANIMATION LOCATIONS
+────────────────────────────────────────────────────────────────────────────
+Homepage sections with fade-in animations:
+  ✓ Hero section heading
+  ✓ Product Categories (6 cards)
+  ✓ Why Choose Us (4 cards)
+  ✓ Featured Products (3 cards)
+  ✓ Brand Partners section
+  ✓ Gallery / Project Inspiration (6 images)
+  ✓ Testimonials (3 cards)
+  ✓ Store Location section
+
+Effect Type: Fade-in-up (fade + slide up from bottom)
+Trigger: When scrolling element into viewport
+Duration: 400-600ms smooth transition
+Stagger: List items animate in sequence
+
+
+COLOR SCHEME
+────────────────────────────────────────────────────────────────────────────
+Primary:       #D4A373 (Light Bronze)     ← Main buttons, accents
+Secondary:     #CCD5AE (Dry Sage)         ← Secondary buttons
+Accent:        #FAEDCD (Papaya Whip)      ← Highlights, featured sections
+Muted:         #E9EDC9 (Beige)            ← Backgrounds, dividers
+Input:         #FFFAE0 (Cornsilk)         ← Form fields
+Background:    #FFFEF9 (Off-white)        ← Page background
+Foreground:    #3d3d3a (Dark)             ← Text content
+
+
+KEYBOARD SHORTCUTS
+────────────────────────────────────────────────────────────────────────────
+None defined yet (standard browser navigation applies)
+
+
+TROUBLESHOOTING
+────────────────────────────────────────────────────────────────────────────
+Admin redirects to login?
+  → You're not logged in. Go to /sign-in first
+
+Can't create account?
+  → Go to /sign-up first, then /sign-in
+
+Products not saving?
+  → Check if logged in. All products require authentication.
+
+Animations not visible?
+  → Try scrolling on homepage. Animations trigger on scroll.
+
+Can't see scroll animations?
+  → Try on mobile view (375px width) for better effect visibility
+
+
+═══════════════════════════════════════════════════════════════════════════
+                           Your Website is Ready!
+═══════════════════════════════════════════════════════════════════════════
