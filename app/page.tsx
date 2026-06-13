@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { Phone, MessageCircle, MapPin, Clock, Star, ChevronRight, Menu, X } from 'lucide-react'
+import { Phone, MessageCircle, MapPin, Clock, Star, ChevronRight, Menu, X, LogIn, LayoutDashboard } from 'lucide-react'
 import { useState } from 'react'
+import { Reveal } from '@/components/scroll-animations'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -23,14 +24,18 @@ export default function Home() {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden md:flex gap-3">
+          <div className="hidden md:flex gap-3 items-center">
+            <Link href="/sign-in" className="flex items-center gap-2 px-4 py-2 text-foreground hover:text-primary transition font-medium">
+              <LogIn size={18} />
+              Sign In
+            </Link>
+            <Link href="/admin" className="flex items-center gap-2 px-4 py-2 border border-primary text-primary rounded hover:bg-primary hover:text-primary-foreground transition">
+              <LayoutDashboard size={18} />
+              Admin
+            </Link>
             <button className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
               <Phone size={18} />
               Call Now
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded hover:opacity-90 transition">
-              <MessageCircle size={18} />
-              WhatsApp
             </button>
           </div>
 
@@ -51,6 +56,14 @@ export default function Home() {
               <a href="/products" className="text-foreground hover:text-primary transition">Products</a>
               <a href="/gallery" className="text-foreground hover:text-primary transition">Gallery</a>
               <a href="/contact" className="text-foreground hover:text-primary transition">Contact</a>
+              <Link href="/sign-in" className="flex items-center gap-2 text-foreground hover:text-primary transition font-medium">
+                <LogIn size={18} />
+                Sign In
+              </Link>
+              <Link href="/admin" className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-primary text-primary rounded hover:bg-primary hover:text-primary-foreground transition">
+                <LayoutDashboard size={18} />
+                Admin Panel
+              </Link>
               <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
                 <Phone size={18} />
                 Call Now
@@ -130,10 +143,10 @@ export default function Home() {
       {/* Product Categories */}
       <section id="products" className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <Reveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">Our Product Range</h2>
             <p className="text-xl text-muted-foreground">Complete solutions for your interior needs</p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -144,23 +157,25 @@ export default function Home() {
               { name: 'Charcoal Panels', image: '/placeholder.svg?height=300&width=400', desc: 'Decorative & functional panels' },
               { name: 'Corian Surfaces', image: '/placeholder.svg?height=300&width=400', desc: 'Premium decorative surfaces' },
             ].map((category, idx) => (
-              <div key={idx} className="bg-card rounded-lg overflow-hidden shadow hover:shadow-lg transition group cursor-pointer">
-                <div className="relative h-48 overflow-hidden bg-muted">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                  />
+              <Reveal key={idx} direction="up" delay={idx * 100}>
+                <div className="bg-card rounded-lg overflow-hidden shadow hover:shadow-lg transition group cursor-pointer h-full">
+                  <div className="relative h-48 overflow-hidden bg-muted">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-foreground mb-2">{category.name}</h3>
+                    <p className="text-muted-foreground mb-4">{category.desc}</p>
+                    <a href="#" className="inline-flex items-center gap-2 text-primary hover:text-accent transition font-semibold">
+                      View Details
+                      <ChevronRight size={18} />
+                    </a>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{category.name}</h3>
-                  <p className="text-muted-foreground mb-4">{category.desc}</p>
-                  <a href="#" className="inline-flex items-center gap-2 text-primary hover:text-accent transition font-semibold">
-                    View Details
-                    <ChevronRight size={18} />
-                  </a>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -169,10 +184,10 @@ export default function Home() {
       {/* Why Choose Us */}
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <Reveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">Why Choose Bajrang Ply?</h2>
             <p className="text-xl text-muted-foreground">Trusted by thousands of homeowners, designers & contractors</p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -181,13 +196,15 @@ export default function Home() {
               { title: 'Expert Guidance', desc: 'Professional advice from experienced team' },
               { title: 'Wholesale & Retail', desc: 'Competitive pricing for all volumes' },
             ].map((item, idx) => (
-              <div key={idx} className="bg-card p-8 rounded-lg shadow text-center hover:shadow-lg transition">
-                <div className="text-primary text-5xl mb-4 flex justify-center">
-                  <Star size={32} />
+              <Reveal key={idx} direction="zoom" delay={idx * 120}>
+                <div className="bg-card p-8 rounded-lg shadow text-center hover:shadow-lg transition h-full">
+                  <div className="text-primary text-5xl mb-4 flex justify-center">
+                    <Star size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.desc}</p>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -196,10 +213,10 @@ export default function Home() {
       {/* Featured Products */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <Reveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">Featured Products</h2>
             <p className="text-xl text-muted-foreground">Our bestsellers & customer favorites</p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -207,31 +224,33 @@ export default function Home() {
               { name: 'Glossy Laminates', price: 'Starting ₹300/sqft', rating: 5 },
               { name: 'Natural Veneers', price: 'Starting ₹400/sqft', rating: 4.5 },
             ].map((product, idx) => (
-              <div key={idx} className="bg-card rounded-lg shadow hover:shadow-lg transition overflow-hidden">
-                <div className="bg-muted h-48 flex items-center justify-center">
-                  <img
-                    src="/placeholder.svg?height=300&width=400"
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-2">{product.name}</h3>
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        className={i < Math.floor(product.rating) ? 'fill-primary text-primary' : 'text-muted'}
-                      />
-                    ))}
+              <Reveal key={idx} direction={idx === 0 ? 'left' : idx === 2 ? 'right' : 'up'} delay={idx * 100}>
+                <div className="bg-card rounded-lg shadow hover:shadow-lg transition overflow-hidden h-full">
+                  <div className="bg-muted h-48 flex items-center justify-center">
+                    <img
+                      src="/placeholder.svg?height=300&width=400"
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <p className="text-muted-foreground mb-4">{product.price}</p>
-                  <button className="w-full py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition font-semibold">
-                    Enquire Now
-                  </button>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-foreground mb-2">{product.name}</h3>
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          size={16}
+                          className={i < Math.floor(product.rating) ? 'fill-primary text-primary' : 'text-muted'}
+                        />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-4">{product.price}</p>
+                    <button className="w-full py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition font-semibold">
+                      Enquire Now
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -256,10 +275,10 @@ export default function Home() {
       {/* Gallery / Inspiration */}
       <section id="gallery" className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <Reveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">Project Inspiration</h2>
             <p className="text-xl text-muted-foreground">Real projects by our customers</p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -270,16 +289,18 @@ export default function Home() {
               'Modular Furniture',
               'Commercial Setup',
             ].map((project, idx) => (
-              <div key={idx} className="relative group overflow-hidden rounded-lg h-64 cursor-pointer">
-                <img
-                  src="/placeholder.svg?height=400&width=500"
-                  alt={project}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-300"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex items-center justify-center">
-                  <h3 className="text-white text-xl font-bold text-center">{project}</h3>
+              <Reveal key={idx} direction="zoom" delay={idx * 90}>
+                <div className="relative group overflow-hidden rounded-lg h-64 cursor-pointer">
+                  <img
+                    src="/placeholder.svg?height=400&width=500"
+                    alt={project}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex items-center justify-center">
+                    <h3 className="text-white text-xl font-bold text-center">{project}</h3>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -288,9 +309,9 @@ export default function Home() {
       {/* Testimonials */}
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <Reveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">What Our Customers Say</h2>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -298,18 +319,20 @@ export default function Home() {
               { name: 'Priya Sharma', role: 'Interior Designer', text: 'Best variety of laminates and veneers. Quick delivery and support.' },
               { name: 'Amit Singh', role: 'Contractor', text: 'Reliable source for all materials. Wholesale rates are very competitive.' },
             ].map((testimonial, idx) => (
-              <div key={idx} className="bg-card p-8 rounded-lg shadow hover:shadow-lg transition">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={18} className="fill-primary text-primary" />
-                  ))}
+              <Reveal key={idx} direction="up" delay={idx * 130}>
+                <div className="bg-card p-8 rounded-lg shadow hover:shadow-lg transition h-full">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={18} className="fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-foreground mb-6 italic">"{testimonial.text}"</p>
+                  <div>
+                    <p className="font-bold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
                 </div>
-                <p className="text-foreground mb-6 italic">"{testimonial.text}"</p>
-                <div>
-                  <p className="font-bold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -318,22 +341,30 @@ export default function Home() {
       {/* Store Location CTA */}
       <section className="py-20 bg-primary text-primary-foreground" id="contact">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Visit Our Store</h2>
-          <p className="text-xl mb-12">Experience our full product range in person</p>
+          <Reveal direction="up">
+            <h2 className="text-4xl font-bold mb-6">Visit Our Store</h2>
+            <p className="text-xl mb-12">Experience our full product range in person</p>
+          </Reveal>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="flex flex-col items-center">
-              <MapPin size={48} className="mb-4" />
-              <p className="text-lg">586, Bara Birwa, Near Hotel Piccadilly<br/>Kanpur Road, Lucknow - 226012</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Phone size={48} className="mb-4" />
-              <p className="text-lg"><strong>Call:</strong><br/>+91-XXXXX-XXXXX</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Clock size={48} className="mb-4" />
-              <p className="text-lg"><strong>Hours:</strong><br/>Mon-Sat: 10 AM - 7 PM<br/>Sun: 11 AM - 5 PM</p>
-            </div>
+            <Reveal direction="up" delay={0}>
+              <div className="flex flex-col items-center">
+                <MapPin size={48} className="mb-4" />
+                <p className="text-lg">586, Bara Birwa, Near Hotel Piccadilly<br/>Kanpur Road, Lucknow - 226012</p>
+              </div>
+            </Reveal>
+            <Reveal direction="up" delay={120}>
+              <div className="flex flex-col items-center">
+                <Phone size={48} className="mb-4" />
+                <p className="text-lg"><strong>Call:</strong><br/>+91-XXXXX-XXXXX</p>
+              </div>
+            </Reveal>
+            <Reveal direction="up" delay={240}>
+              <div className="flex flex-col items-center">
+                <Clock size={48} className="mb-4" />
+                <p className="text-lg"><strong>Hours:</strong><br/>Mon-Sat: 10 AM - 7 PM<br/>Sun: 11 AM - 5 PM</p>
+              </div>
+            </Reveal>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -356,7 +387,8 @@ export default function Home() {
       {/* Enquiry Form CTA */}
       <section className="py-20 bg-muted">
         <div className="max-w-2xl mx-auto px-4">
-          <div className="bg-card rounded-lg shadow-lg p-10">
+          <Reveal direction="zoom">
+            <div className="bg-card rounded-lg shadow-lg p-10">
             <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Quick Enquiry Form</h2>
             <form className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
@@ -377,7 +409,8 @@ export default function Home() {
                 Send Enquiry
               </button>
             </form>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
