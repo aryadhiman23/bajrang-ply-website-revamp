@@ -95,12 +95,12 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
     <>
       {/* Header */}
       <header className="fixed top-0 w-full bg-card shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/products" className="text-primary hover:text-accent transition">
               <ChevronLeft size={24} />
             </Link>
-            <div className="text-2xl font-bold text-primary">Product Details</div>
+            <img src="/bajrang-ply-logo.png" alt="Bajrang Ply" className="h-14 w-auto" />
           </div>
         </div>
       </header>

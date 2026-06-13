@@ -50,39 +50,39 @@
 
 :root {
   color-scheme: light;
-  /* Premium warm palette for plywood/interior materials */
-  --background: #fafaf8;
-  --foreground: #2c2c2a;
+  /* Bajrang Ply - Earthy Natural Color Palette */
+  --background: #FFFEF9;
+  --foreground: #3d3d3a;
   --card: #ffffff;
-  --card-foreground: #2c2c2a;
+  --card-foreground: #3d3d3a;
   --popover: #ffffff;
-  --popover-foreground: #2c2c2a;
-  --primary: #8b6f47;
+  --popover-foreground: #3d3d3a;
+  --primary: #D4A373;
   --primary-foreground: #ffffff;
-  --secondary: #c9a877;
-  --secondary-foreground: #2c2c2a;
-  --muted: #e8e6e1;
-  --muted-foreground: #6b6b67;
-  --accent: #9d8869;
-  --accent-foreground: #ffffff;
+  --secondary: #CCD5AE;
+  --secondary-foreground: #3d3d3a;
+  --muted: #E9EDC9;
+  --muted-foreground: #5d5d5a;
+  --accent: #FAEDCD;
+  --accent-foreground: #3d3d3a;
   --destructive: #c75d5d;
-  --border: #e0ddd8;
-  --input: #f5f3f0;
-  --ring: #8b6f47;
-  --chart-1: #8b6f47;
-  --chart-2: #c9a877;
-  --chart-3: #6b5f45;
-  --chart-4: #9d8869;
-  --chart-5: #4a4238;
+  --border: #E9EDC9;
+  --input: #FFFAE0;
+  --ring: #D4A373;
+  --chart-1: #D4A373;
+  --chart-2: #CCD5AE;
+  --chart-3: #FAEDCD;
+  --chart-4: #E9EDC9;
+  --chart-5: #a68659;
   --radius: 0.625rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #2c2c2a;
-  --sidebar-primary: #8b6f47;
+  --sidebar-foreground: #3d3d3a;
+  --sidebar-primary: #D4A373;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #c9a877;
-  --sidebar-accent-foreground: #2c2c2a;
-  --sidebar-border: #e0ddd8;
-  --sidebar-ring: #8b6f47;
+  --sidebar-accent: #CCD5AE;
+  --sidebar-accent-foreground: #3d3d3a;
+  --sidebar-border: #E9EDC9;
+  --sidebar-ring: #D4A373;
 }
 
 .dark {
