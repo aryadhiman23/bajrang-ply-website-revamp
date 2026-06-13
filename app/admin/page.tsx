@@ -1,138 +1,195 @@
 'use client'
 
-import { authClient } from '@/lib/auth-client'
+import { useSession, signOut } from '@/lib/auth-client'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { getProducts } from '@/app/actions/products'
+import { getArticles } from '@/app/actions/articles'
+import { LayoutDashboard, Package, FileText, PlusCircle, LogOut, Loader2 } from 'lucide-react'
 
 export default function AdminDashboard() {
   const router = useRouter()
-  const [user, setUser] = useState<{ name: string; email: string } | null>(null)
-  const [loading, setLoading] = useState(true)
+  const { data: session, isPending } = useSession()
+  const [stats, setStats] = useState({ products: 0, articles: 0, published: 0 })
+  const [statsLoading, setStatsLoading] = useState(true)
 
   useEffect(() => {
-    (async () => {
-      const session = await authClient.getSession()
-      if (session?.user) {
-        setUser(session.user as any)
-      } else {
-        router.push('/sign-in')
+    // Wait until session is resolved
+    if (isPending) return
+
+    if (!session?.user) {
+      router.push('/sign-in')
+      return
+    }
+
+    // Fetch stats
+    ;(async () => {
+      try {
+        const [prods, arts] = await Promise.all([getProducts(), getArticles()])
+        setStats({
+          products: prods.length,
+          articles: arts.length,
+          published: arts.filter((a: any) => a.published).length,
+        })
+      } catch {
+        // stats are non-critical
+      } finally {
+        setStatsLoading(false)
       }
-      setLoading(false)
     })()
-  }, [router])
+  }, [session, isPending, router])
 
   const handleLogout = async () => {
-    await authClient.signOut()
+    await signOut()
     router.push('/')
   }
 
-  if (loading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+  // Show loading spinner while session is being fetched
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 size={36} className="animate-spin text-primary" />
+          <p className="text-muted-foreground text-sm">Loading dashboard...</p>
+        </div>
+      </div>
+    )
   }
+
+  // Session resolved but no user — redirect handled in useEffect
+  if (!session?.user) return null
+
+  const user = session.user
 
   return (
     <div className="flex min-h-screen bg-background">
       {/* Sidebar */}
-      <aside className="w-64 bg-card shadow-lg">
-        <div className="p-8">
-          <h1 className="text-2xl font-bold text-primary mb-8">Bajrang Ply Admin</h1>
-          <nav className="space-y-4">
-            <Link
-              href="/admin"
-              className="block px-4 py-2 rounded bg-primary text-primary-foreground hover:opacity-90 transition"
-            >
-              Dashboard
-            </Link>
-            <Link
-              href="/admin/products"
-              className="block px-4 py-2 rounded text-foreground hover:bg-muted transition"
-            >
-              Manage Products
-            </Link>
-            <Link
-              href="/admin/articles"
-              className="block px-4 py-2 rounded text-foreground hover:bg-muted transition"
-            >
-              Manage Articles
-            </Link>
-          </nav>
+      <aside className="w-64 bg-card shadow-lg flex flex-col">
+        <div className="p-6 border-b border-border">
+          <div className="flex items-center gap-2 mb-1">
+            <LayoutDashboard size={20} className="text-primary" />
+            <h1 className="text-lg font-bold text-primary">Bajrang Ply</h1>
+          </div>
+          <p className="text-xs text-muted-foreground">Admin Panel</p>
         </div>
 
-        {/* Logout */}
-        <div className="absolute bottom-0 left-0 w-64 p-6 border-t border-border">
-          <div className="text-sm text-muted-foreground mb-4">
-            <p className="font-semibold">{user?.name}</p>
-            <p className="text-xs">{user?.email}</p>
-          </div>
+        <nav className="flex flex-col gap-1 p-4 flex-1">
+          <Link
+            href="/admin"
+            className="flex items-center gap-3 px-4 py-2.5 rounded bg-primary text-primary-foreground font-medium"
+          >
+            <LayoutDashboard size={18} />
+            Dashboard
+          </Link>
+          <Link
+            href="/admin/products"
+            className="flex items-center gap-3 px-4 py-2.5 rounded text-foreground hover:bg-muted transition"
+          >
+            <Package size={18} />
+            Manage Products
+          </Link>
+          <Link
+            href="/admin/articles"
+            className="flex items-center gap-3 px-4 py-2.5 rounded text-foreground hover:bg-muted transition"
+          >
+            <FileText size={18} />
+            Manage Articles
+          </Link>
+        </nav>
+
+        {/* User + Logout */}
+        <div className="p-4 border-t border-border">
+          <p className="text-sm font-semibold text-foreground truncate">{user.name}</p>
+          <p className="text-xs text-muted-foreground truncate mb-3">{user.email}</p>
           <button
             onClick={handleLogout}
-            className="w-full px-4 py-2 bg-destructive text-white rounded hover:opacity-90 transition text-sm font-semibold"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-destructive text-white rounded hover:opacity-90 transition text-sm font-semibold"
           >
+            <LogOut size={16} />
             Logout
           </button>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-8 overflow-auto">
         <div className="max-w-5xl">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Welcome to Admin Panel</h2>
-          <p className="text-muted-foreground text-lg mb-12">
+          <h2 className="text-3xl font-bold text-foreground mb-1">
+            Welcome back, {user.name.split(' ')[0]}
+          </h2>
+          <p className="text-muted-foreground mb-10">
             Manage your products, articles, and inventory from here.
           </p>
 
           {/* Quick Actions */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <h3 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h3>
+          <div className="grid md:grid-cols-2 gap-4 mb-10">
             <Link
               href="/admin/products/new"
-              className="p-6 bg-card rounded-lg shadow hover:shadow-lg transition border-l-4 border-primary"
+              className="flex items-start gap-4 p-5 bg-card rounded-lg shadow hover:shadow-md transition border-l-4 border-primary"
             >
-              <h3 className="text-xl font-bold text-foreground mb-2">Add New Product</h3>
-              <p className="text-muted-foreground">Create a new product with images and details</p>
+              <PlusCircle size={24} className="text-primary mt-0.5 shrink-0" />
+              <div>
+                <h4 className="text-base font-bold text-foreground mb-1">Add New Product</h4>
+                <p className="text-sm text-muted-foreground">Create a new product with images and details</p>
+              </div>
             </Link>
 
             <Link
               href="/admin/articles/new"
-              className="p-6 bg-card rounded-lg shadow hover:shadow-lg transition border-l-4 border-secondary"
+              className="flex items-start gap-4 p-5 bg-card rounded-lg shadow hover:shadow-md transition border-l-4 border-secondary"
             >
-              <h3 className="text-xl font-bold text-foreground mb-2">Write New Article</h3>
-              <p className="text-muted-foreground">Create and publish new blog articles</p>
+              <PlusCircle size={24} className="text-secondary mt-0.5 shrink-0" />
+              <div>
+                <h4 className="text-base font-bold text-foreground mb-1">Write New Article</h4>
+                <p className="text-sm text-muted-foreground">Create and publish new blog articles</p>
+              </div>
             </Link>
 
             <Link
               href="/admin/products"
-              className="p-6 bg-card rounded-lg shadow hover:shadow-lg transition border-l-4 border-accent"
+              className="flex items-start gap-4 p-5 bg-card rounded-lg shadow hover:shadow-md transition border-l-4 border-accent"
             >
-              <h3 className="text-xl font-bold text-foreground mb-2">View All Products</h3>
-              <p className="text-muted-foreground">Edit, delete, or manage existing products</p>
+              <Package size={24} className="text-accent-foreground mt-0.5 shrink-0" />
+              <div>
+                <h4 className="text-base font-bold text-foreground mb-1">View All Products</h4>
+                <p className="text-sm text-muted-foreground">Edit, delete, or manage existing products</p>
+              </div>
             </Link>
 
             <Link
               href="/admin/articles"
-              className="p-6 bg-card rounded-lg shadow hover:shadow-lg transition border-l-4 border-muted"
+              className="flex items-start gap-4 p-5 bg-card rounded-lg shadow hover:shadow-md transition border-l-4 border-ring"
             >
-              <h3 className="text-xl font-bold text-foreground mb-2">View All Articles</h3>
-              <p className="text-muted-foreground">Edit, delete, or publish articles</p>
+              <FileText size={24} className="text-ring mt-0.5 shrink-0" />
+              <div>
+                <h4 className="text-base font-bold text-foreground mb-1">View All Articles</h4>
+                <p className="text-sm text-muted-foreground">Edit, delete, or publish articles</p>
+              </div>
             </Link>
           </div>
 
           {/* Stats */}
-          <div className="mt-12 pt-8 border-t border-border">
-            <h3 className="text-2xl font-bold text-foreground mb-6">Quick Stats</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="p-6 bg-primary/10 rounded-lg">
-                <p className="text-muted-foreground text-sm mb-2">Total Products</p>
-                <p className="text-3xl font-bold text-primary">-</p>
-              </div>
-              <div className="p-6 bg-secondary/10 rounded-lg">
-                <p className="text-muted-foreground text-sm mb-2">Total Articles</p>
-                <p className="text-3xl font-bold text-secondary">-</p>
-              </div>
-              <div className="p-6 bg-accent/10 rounded-lg">
-                <p className="text-muted-foreground text-sm mb-2">Published Articles</p>
-                <p className="text-3xl font-bold text-accent">-</p>
-              </div>
+          <h3 className="text-lg font-semibold text-foreground mb-4">Quick Stats</h3>
+          <div className="grid md:grid-cols-3 gap-5">
+            <div className="p-6 bg-primary/10 rounded-lg border border-primary/20">
+              <p className="text-muted-foreground text-sm mb-2">Total Products</p>
+              <p className="text-3xl font-bold text-primary">
+                {statsLoading ? <Loader2 size={24} className="animate-spin" /> : stats.products}
+              </p>
+            </div>
+            <div className="p-6 bg-secondary/20 rounded-lg border border-secondary/30">
+              <p className="text-muted-foreground text-sm mb-2">Total Articles</p>
+              <p className="text-3xl font-bold text-foreground">
+                {statsLoading ? <Loader2 size={24} className="animate-spin" /> : stats.articles}
+              </p>
+            </div>
+            <div className="p-6 bg-muted rounded-lg border border-border">
+              <p className="text-muted-foreground text-sm mb-2">Published Articles</p>
+              <p className="text-3xl font-bold text-foreground">
+                {statsLoading ? <Loader2 size={24} className="animate-spin" /> : stats.published}
+              </p>
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
 'use client'
 
 import { deleteArticle, getArticles } from '@/app/actions/articles'
-import { authClient } from '@/lib/auth-client'
+import { useSession } from '@/lib/auth-client'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { ChevronLeft, Plus, Trash2, Edit2 } from 'lucide-react'
+import { ChevronLeft, Plus, Trash2, Edit2, Loader2 } from 'lucide-react'
 
 interface Article {
   id: number
@@ -18,21 +18,22 @@ interface Article {
 
 export default function ArticlesPage() {
   const router = useRouter()
+  const { data: session, isPending } = useSession()
   const [articles, setArticles] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    (async () => {
-      const session = await authClient.getSession()
-      if (!session?.user) {
-        router.push('/sign-in')
-      } else {
-        const data = await getArticles()
-        setArticles(data)
-        setLoading(false)
-      }
+    if (isPending) return
+    if (!session?.user) {
+      router.push('/sign-in')
+      return
+    }
+    ;(async () => {
+      const data = await getArticles()
+      setArticles(data)
+      setLoading(false)
     })()
-  }, [router])
+  }, [session, isPending, router])
 
   const handleDelete = async (id: number) => {
     if (confirm('Are you sure you want to delete this article?')) {
@@ -41,8 +42,15 @@ export default function ArticlesPage() {
     }
   }
 
-  if (loading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+  if (isPending || loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 size={36} className="animate-spin text-primary" />
+          <p className="text-muted-foreground text-sm">Loading articles...</p>
+        </div>
+      </div>
+    )
   }
 
   return (

@@ -1,17 +1,17 @@
 'use client'
 
 import { createProduct } from '@/app/actions/products'
-import { authClient } from '@/lib/auth-client'
+import { useSession } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 
 const categories = ['Plywood', 'Laminates', 'Veneers', 'Hardware', 'Charcoal Panels', 'Corian Surfaces', 'Other']
 
 export default function NewProductPage() {
   const router = useRouter()
-  const [loading, setLoading] = useState(true)
+  const { data: session, isPending } = useSession()
   const [submitting, setSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -21,14 +21,9 @@ export default function NewProductPage() {
   })
 
   useEffect(() => {
-    (async () => {
-      const session = await authClient.getSession()
-      if (!session?.user) {
-        router.push('/sign-in')
-      }
-      setLoading(false)
-    })()
-  }, [router])
+    if (isPending) return
+    if (!session?.user) router.push('/sign-in')
+  }, [session, isPending, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,8 +43,12 @@ export default function NewProductPage() {
     }
   }
 
-  if (loading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background">
+        <Loader2 size={36} className="animate-spin text-primary" />
+      </div>
+    )
   }
 
   return (

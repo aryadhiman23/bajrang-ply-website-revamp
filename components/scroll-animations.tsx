@@ -9,8 +9,6 @@ interface RevealProps {
   className?: string
   delay?: number
   direction?: Direction
-  /** When true, the animation re-plays every time it scrolls back into view */
-  repeat?: boolean
 }
 
 const directionClass: Record<Direction, string> = {
@@ -25,7 +23,6 @@ export function Reveal({
   className = '',
   delay = 0,
   direction = 'up',
-  repeat = false,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -33,22 +30,30 @@ export function Reveal({
     const el = ref.current
     if (!el) return
 
+    // Check if element is already in the viewport on mount (above the fold)
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.style.transitionDelay = `${delay}ms`
+      el.classList.add('in-view')
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           el.style.transitionDelay = `${delay}ms`
           el.classList.add('in-view')
-          if (!repeat) observer.unobserve(el)
-        } else if (repeat) {
-          el.classList.remove('in-view')
+          observer.unobserve(el)
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+      // threshold:0 = fires as soon as even 1px is visible
+      // rootMargin: slight top buffer so cards animate just before fully in view
+      { threshold: 0, rootMargin: '0px 0px -40px 0px' }
     )
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [delay, repeat])
+  }, [delay])
 
   return (
     <div ref={ref} className={`${directionClass[direction]} ${className}`}>
@@ -57,7 +62,7 @@ export function Reveal({
   )
 }
 
-/* Backwards-compatible aliases */
+/* Backwards-compatible alias */
 export function FadeInUp({ children, className, delay }: RevealProps) {
   return (
     <Reveal direction="up" className={className} delay={delay}>

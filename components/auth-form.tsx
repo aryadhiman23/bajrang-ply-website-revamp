@@ -31,11 +31,12 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     setLoading(false)
 
     if (error) {
-      setError(error.message ?? 'Something went wrong')
+      setError(error.message ?? 'Something went wrong. Please try again.')
       return
     }
 
-    router.push('/')
+    // After both sign-up and sign-in, go to admin dashboard
+    router.push('/admin')
     router.refresh()
   }
 
