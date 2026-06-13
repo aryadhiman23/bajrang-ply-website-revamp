@@ -100,7 +100,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
             <Link href="/products" className="text-primary hover:text-accent transition">
               <ChevronLeft size={24} />
             </Link>
-            <img src="/bajrang-ply-logo.png" alt="Bajrang Ply" className="h-14 w-auto" />
+            <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-14 w-auto" />
           </div>
         </div>
       </header>

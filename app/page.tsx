@@ -13,7 +13,7 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-card shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <img src="/bajrang-ply-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
+          <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex gap-8 items-center">
@@ -430,7 +430,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
-              <img src="/bajrang-ply-logo.png" alt="Bajrang Ply" className="h-20 w-auto mb-4" />
+              <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-20 w-auto mb-4" />
               <p className="text-sm opacity-80">Premium plywood and interior materials dealer in Lucknow</p>
             </div>
             <div>

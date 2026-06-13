@@ -46,7 +46,7 @@ export default function GalleryPage() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-card shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <img src="/bajrang-ply-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
+          <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
         </div>
       </header>
 
