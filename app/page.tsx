@@ -460,7 +460,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm opacity-80">
-            <p>&copy; {new Date().getFullYear()} Bajrang Ply. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Bajrang Plywood. All rights reserved.</p>
           </div>
         </div>
       </footer>
