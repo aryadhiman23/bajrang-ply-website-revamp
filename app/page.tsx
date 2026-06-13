@@ -14,7 +14,7 @@ export default function Home() {
       <header className="fixed top-0 w-full bg-card shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
           <img src="/bajrang-ply-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
-          
+
           {/* Desktop Menu */}
           <nav className="hidden md:flex gap-8 items-center">
             <a href="/about" className="text-foreground hover:text-primary transition">About</a>
@@ -40,7 +40,7 @@ export default function Home() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -356,24 +356,24 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-6">Visit Our Store</h2>
             <p className="text-xl mb-12">Experience our full product range in person</p>
           </Reveal>
-          
+
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Reveal direction="up" delay={0}>
               <div className="flex flex-col items-center">
                 <MapPin size={48} className="mb-4" />
-                <p className="text-lg">586, Bara Birwa, Near Hotel Piccadilly<br/>Kanpur Road, Lucknow - 226012</p>
+                <p className="text-lg">586, Bara Birwa, Near Hotel Piccadilly<br />Kanpur Road, Lucknow - 226012</p>
               </div>
             </Reveal>
             <Reveal direction="up" delay={120}>
               <div className="flex flex-col items-center">
                 <Phone size={48} className="mb-4" />
-                <p className="text-lg"><strong>Call:</strong><br/>+91-XXXXX-XXXXX</p>
+                <p className="text-lg"><strong>Call:</strong><br />+91-XXXXX-XXXXX</p>
               </div>
             </Reveal>
             <Reveal direction="up" delay={240}>
               <div className="flex flex-col items-center">
                 <Clock size={48} className="mb-4" />
-                <p className="text-lg"><strong>Hours:</strong><br/>Mon-Sat: 10 AM - 7 PM<br/>Sun: 11 AM - 5 PM</p>
+                <p className="text-lg"><strong>Hours:</strong><br />Mon-Sat: 10 AM - 7 PM<br />Sun: 11 AM - 5 PM</p>
               </div>
             </Reveal>
           </div>
@@ -400,26 +400,26 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-4">
           <Reveal direction="zoom">
             <div className="bg-card rounded-lg shadow-lg p-10">
-            <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Quick Enquiry Form</h2>
-            <form className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Your Name" className="px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary" />
-                <input type="email" placeholder="Your Email" className="px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary" />
-              </div>
-              <input type="tel" placeholder="Phone Number" className="w-full px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary" />
-              <select className="w-full px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary">
-                <option>Select Product Interest</option>
-                <option>Plywood</option>
-                <option>Laminates</option>
-                <option>Veneers</option>
-                <option>Hardware</option>
-                <option>Other</option>
-              </select>
-              <textarea placeholder="Your Requirements" rows={4} className="w-full px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-              <button type="submit" className="w-full py-3 bg-primary text-primary-foreground rounded font-bold hover:bg-accent transition">
-                Send Enquiry
-              </button>
-            </form>
+              <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Quick Enquiry Form</h2>
+              <form className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <input type="text" placeholder="Your Name" className="px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary" />
+                  <input type="email" placeholder="Your Email" className="px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary" />
+                </div>
+                <input type="tel" placeholder="Phone Number" className="w-full px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary" />
+                <select className="w-full px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option>Select Product Interest</option>
+                  <option>Plywood</option>
+                  <option>Laminates</option>
+                  <option>Veneers</option>
+                  <option>Hardware</option>
+                  <option>Other</option>
+                </select>
+                <textarea placeholder="Your Requirements" rows={4} className="w-full px-4 py-3 bg-muted border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                <button type="submit" className="w-full py-3 bg-primary text-primary-foreground rounded font-bold hover:bg-accent transition">
+                  Send Enquiry
+                </button>
+              </form>
             </div>
           </Reveal>
         </div>
@@ -460,7 +460,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm opacity-80">
-            <p>&copy; 2024 Bajrang Ply. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Bajrang Ply. All rights reserved.</p>
           </div>
         </div>
       </footer>
