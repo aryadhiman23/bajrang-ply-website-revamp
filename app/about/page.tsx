@@ -1,213 +1,366 @@
 'use client'
 
 import Link from 'next/link'
-import { CheckCircle2, Award, Users, TrendingUp } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { Quote, Target, Eye, MapPin, ChevronRight } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 
+const tabs = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'story', label: 'Our Story' },
+  { id: 'founder', label: "Founder's Desk" },
+  { id: 'products', label: 'Products We Deal In' },
+  { id: 'vision', label: 'Mission & Vision' },
+]
+
+const productCategories = [
+  'Plywood',
+  'Block Boards',
+  'Flush Doors',
+  'Decorative Laminates',
+  'Veneers',
+  'Corian Sheets',
+  'Charcoal Panels',
+  'MDF Boards',
+  'PVC Panels',
+  'Hardware Fittings',
+  'Adhesives',
+  'Decorative Interior Materials',
+]
+
 export default function AboutPage() {
+  const [activeId, setActiveId] = useState(tabs[0].id)
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
+  const tabsRef = useRef<HTMLDivElement | null>(null)
+  const isClickScrolling = useRef(false)
+
+  // Scroll-sync: highlight the tab for the section currently in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isClickScrolling.current) return
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        if (visible[0]) {
+          setActiveId(visible[0].target.id)
+        }
+      },
+      {
+        rootMargin: '-180px 0px -70% 0px',
+        threshold: [0, 0.1, 0.2],
+      },
+    )
+
+    Object.values(sectionRefs.current).forEach((el) => el && observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  // Keep the active tab scrolled into view inside the tab bar
+  useEffect(() => {
+    const tabEl = tabsRef.current?.querySelector<HTMLElement>(`[data-tab="${activeId}"]`)
+    tabEl?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+  }, [activeId])
+
+  const scrollToSection = (id: string) => {
+    setActiveId(id)
+    isClickScrolling.current = true
+    const el = sectionRefs.current[id]
+    if (el) {
+      const offset = 136
+      const y = el.getBoundingClientRect().top + window.scrollY - offset
+      window.scrollTo({ top: y, behavior: 'smooth' })
+    }
+    window.setTimeout(() => {
+      isClickScrolling.current = false
+    }, 1000)
+  }
+
   return (
     <>
       <SiteHeader />
 
-      <div className="mt-20 min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-b from-muted to-background py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h1 className="text-5xl font-bold text-foreground mb-6">About Bajrang Ply</h1>
-              <p className="text-2xl text-primary font-semibold">More Than Just Plywood</p>
+      {/* Hero with background image */}
+      <section className="relative mt-20 h-[340px] md:h-[420px] flex items-center overflow-hidden">
+        <img
+          src="/about/background.jpg"
+          alt="Bajrang Plywood showroom interior"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-foreground/70" />
+        <div className="relative max-w-7xl mx-auto px-4 w-full">
+          <p className="text-primary-foreground/70 text-sm tracking-widest uppercase mb-3">
+            <Link href="/" className="hover:text-primary-foreground transition">Home</Link>
+            <span className="mx-2">/</span>
+            <span className="text-primary">About Us</span>
+          </p>
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground text-balance">About Us</h1>
+          <p className="text-lg md:text-xl text-primary-foreground/80 mt-4 max-w-2xl leading-relaxed">
+            One of the leading plywood, hardware &amp; decorative interior material suppliers in North India — proudly serving since 2013.
+          </p>
+        </div>
+      </section>
+
+      {/* Sticky Tab Navigation */}
+      <div className="sticky top-20 z-40 bg-card/95 backdrop-blur border-b border-border shadow-sm">
+        <div
+          ref={tabsRef}
+          className="max-w-7xl mx-auto px-4 flex gap-2 overflow-x-auto scrollbar-hide py-3"
+        >
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              data-tab={t.id}
+              onClick={() => scrollToSection(t.id)}
+              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition cursor-pointer ${
+                activeId === t.id
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted text-foreground hover:bg-primary/10'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <main className="bg-background">
+        {/* Overview */}
+        <section
+          id="overview"
+          ref={(el) => {
+            sectionRefs.current['overview'] = el
+          }}
+          className="scroll-mt-40 py-16 md:py-20"
+        >
+          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">
+                Bajrang Plywood
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">
+                Plywood Wholesale Dealers in North India
+              </h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Bajrang Plywood is one of the leading plywood, hardware, and decorative interior material suppliers in North India, proudly serving customers since 2013. Based in Lucknow, we have established ourselves as a trusted name in the industry by providing premium-quality products, competitive pricing, and dependable service.
+                </p>
+                <p>
+                  Today, Bajrang Plywood supplies products across Uttar Pradesh, Uttarakhand, and major cities along the Nepal border region, while also catering to customers in various parts of India through a strong distribution network.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 mt-8">
+                {[
+                  { value: '2013', label: 'Serving Since' },
+                  { value: '10+', label: 'Years Experience' },
+                  { value: '3+', label: 'States Covered' },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-muted rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                    <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="rounded-lg h-96 overflow-hidden shadow-lg">
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src="/about/showroom-1.jpg"
+                alt="Bajrang Plywood premium wardrobe display"
+                className="rounded-lg shadow-lg w-full h-64 object-cover col-span-2"
+              />
+              <img
+                src="/about/showroom-4.jpg"
+                alt="Bajrang Plywood laminate and hardware showcase"
+                className="rounded-lg shadow-lg w-full h-48 object-cover"
+              />
+              <img
+                src="/about/showroom-2.jpg"
+                alt="Bajrang Plywood flush door collection"
+                className="rounded-lg shadow-lg w-full h-48 object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Our Story */}
+        <section
+          id="story"
+          ref={(el) => {
+            sectionRefs.current['story'] = el
+          }}
+          className="scroll-mt-40 py-16 md:py-20 bg-muted"
+        >
+          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <img
+                src="/about/showroom-3.jpg"
+                alt="Bajrang Plywood interior decor display"
+                className="rounded-lg shadow-lg w-full h-[420px] object-cover"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">Our Story</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">
+                Built On A Vision Of Quality &amp; Trust
+              </h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Founded by <strong className="text-foreground">Mr. Anmol Agarwal</strong>, Bajrang Plywood was built with a vision to create a reliable destination where customers could find high-quality plywood and interior solutions under one roof. After completing his schooling from City Montessori School (CMS), Lucknow, and earning his Engineering degree from Babu Banarasi Das (BBD) College in 2012, Mr. Agarwal entered the industry with a commitment to quality, innovation, and customer satisfaction.
+                </p>
+                <p>
+                  What began as a focused business venture has today evolved into a trusted partner for homeowners, architects, interior designers, contractors, builders, furniture manufacturers, and commercial establishments.
+                </p>
+                <p>
+                  Over the years, Bajrang Plywood has earned the confidence of thousands of customers by consistently delivering products that combine durability, performance, and value — whether for modular furniture, wardrobes, kitchens, office interiors, retail spaces, hotels, or large-scale construction projects.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Founder's Desk */}
+        <section
+          id="founder"
+          ref={(el) => {
+            sectionRefs.current['founder'] = el
+          }}
+          className="scroll-mt-40 py-16 md:py-20"
+        >
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">From The Founder&apos;s Desk</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">A Message From Our Director</h2>
+            </div>
+
+            <div className="grid lg:grid-cols-[340px_1fr] gap-12 items-start">
+              <div className="text-center">
+                <div className="rounded-xl overflow-hidden shadow-lg border-4 border-primary/20">
                   <img
-                    src="/images/hero-luxury-interior.jpg"
-                    alt="Bajrang Ply premium showroom"
-                    className="w-full h-full object-cover"
+                    src="/about/founder.jpg"
+                    alt="Mr. Anmol Agarwal, Director of Bajrang Plywood"
+                    className="w-full h-[380px] object-cover"
                   />
                 </div>
+                <h3 className="text-xl font-bold text-foreground mt-6">Mr. Anmol Agarwal</h3>
+                <p className="text-primary font-medium">Director, Bajrang Plywood</p>
               </div>
-              <div>
-                <h2 className="text-3xl font-bold text-foreground mb-6">Our Story</h2>
-                <p className="text-muted-foreground text-lg mb-4 leading-relaxed">
-                  Established in 2004, Bajrang Ply has been serving Lucknow and surrounding regions for over 20 years with premium quality plywood and interior materials. What started as a small showroom has grown into a trusted destination for homeowners, designers, contractors, and builders.
-                </p>
-                <p className="text-muted-foreground text-lg mb-4 leading-relaxed">
-                  We understand that quality matters. Every product we stock is carefully selected from trusted manufacturers, ensuring durability, reliability, and value for money. From plywood to laminates, veneers to hardware – we've got everything your interior project needs.
-                </p>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Our commitment to excellence and customer satisfaction has made us the go-to choice for thousands of happy customers across Lucknow, Kanpur, and beyond.
-                </p>
+
+              <div className="bg-muted rounded-xl p-8 md:p-10 relative">
+                <Quote className="text-primary/30 absolute top-6 right-6" size={56} />
+                <p className="text-lg font-semibold text-foreground mb-4">Welcome to Bajrang Plywood!</p>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    Since 2013, we have been devoted to supplying high-quality plywood, hardware, and decorative accessories. Our commitment to ethics, creativity, and great workmanship guarantees that we provide the finest solutions for your projects.
+                  </p>
+                  <p>
+                    We retain our industry leadership by making continual investments in our facilities and professional workforce. Everything we do revolves around ensuring customer happiness. Our objective is to provide reliable, high-quality products at competitive prices.
+                  </p>
+                  <p>
+                    We believe in blending traditional principles with modern technology to adapt swiftly to the evolving needs of our clients. Thank you for considering Bajrang Plywood. We are eager to be part of your journey and assist you in realizing your vision.
+                  </p>
+                </div>
+                <p className="mt-6 text-foreground font-semibold">Warm Regards,</p>
+                <p className="text-primary font-bold">Mr. Anmol Agarwal</p>
+                <p className="text-sm text-muted-foreground">Director of Bajrang Plywood</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Products We Deal In */}
+        <section
+          id="products"
+          ref={(el) => {
+            sectionRefs.current['products'] = el
+          }}
+          className="scroll-mt-40 py-16 md:py-20 bg-muted"
+        >
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">Products We Deal In</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
+                A Complete Range Of Interior Solutions
+              </h2>
+              <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                We deal in the most prominent, refined, and innovative range of products across numerous categories — partnering with respected, trusted brands to ensure every product meets strict quality benchmarks.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {productCategories.map((cat) => (
+                <div
+                  key={cat}
+                  className="flex items-center gap-3 bg-card rounded-lg p-4 shadow-sm border border-border hover:border-primary hover:shadow-md transition"
+                >
+                  <ChevronRight className="text-primary flex-shrink-0" size={18} />
+                  <span className="text-foreground font-medium text-sm">{cat}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-10">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded font-bold hover:bg-accent transition"
+              >
+                Explore Full Catalogue
+                <ChevronRight size={18} />
+              </Link>
             </div>
           </div>
         </section>
 
         {/* Mission & Vision */}
-        <section className="bg-primary text-primary-foreground py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-primary-foreground/10 rounded-lg p-8">
-                <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-                <p className="text-lg leading-relaxed">
-                  To be the most trusted and convenient one-stop shop for quality plywood and interior materials in Lucknow and the region. We empower our customers to create beautiful, durable, and functional spaces with premium products and expert guidance.
+        <section
+          id="vision"
+          ref={(el) => {
+            sectionRefs.current['vision'] = el
+          }}
+          className="scroll-mt-40 py-16 md:py-20"
+        >
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">What Drives Us</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">Our Mission &amp; Vision</h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-card rounded-xl p-8 shadow border border-border">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+                  <Target className="text-primary" size={28} />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">Our Mission</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  To provide customers with premium-quality products at competitive prices while maintaining the highest standards of integrity, reliability, and customer satisfaction.
                 </p>
               </div>
-              <div className="bg-primary-foreground/10 rounded-lg p-8">
-                <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-                <p className="text-lg leading-relaxed">
-                  To become the leading premium interior materials destination known for uncompromising quality, competitive pricing, and exceptional customer service. We aim to make high-quality materials accessible to everyone – from homeowners to commercial builders.
+              <div className="bg-card rounded-xl p-8 shadow border border-border">
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+                  <Eye className="text-primary" size={28} />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">Our Vision</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  To become the most trusted and preferred supplier of plywood, hardware, and decorative interior solutions by consistently delivering superior quality products, innovative solutions, and exceptional customer service.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Core Values */}
-        <section className="py-20 bg-background">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Our Core Values</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { title: 'Quality First', desc: 'Premium products from trusted brands' },
-                { title: 'Customer Focus', desc: 'Your satisfaction is our priority' },
-                { title: 'Transparency', desc: 'Honest pricing and clear communication' },
-                { title: 'Expertise', desc: 'Professional guidance at every step' }
-              ].map((value, idx) => (
-                <div key={idx} className="bg-card rounded-lg p-6 shadow text-center hover:shadow-lg transition">
-                  <CheckCircle2 size={40} className="text-primary mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-foreground mb-2">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="py-20 bg-muted">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Why Choose Bajrang Ply?</h2>
-            
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Left Column */}
-              <div className="space-y-8">
-                <div className="flex gap-6">
-                  <Award className="text-primary flex-shrink-0" size={32} />
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">20+ Years Experience</h3>
-                    <p className="text-muted-foreground">Decades of expertise in the plywood and interior materials industry</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <Users className="text-primary flex-shrink-0" size={32} />
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">10,000+ Satisfied Customers</h3>
-                    <p className="text-muted-foreground">From homeowners to professional designers and contractors</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <TrendingUp className="text-primary flex-shrink-0" size={32} />
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">Continuous Growth</h3>
-                    <p className="text-muted-foreground">Expanding our product range and service reach every year</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column */}
-              <div className="space-y-8">
-                <div className="flex gap-6">
-                  <CheckCircle2 className="text-primary flex-shrink-0" size={32} />
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">Premium Product Range</h3>
-                    <p className="text-muted-foreground">500+ variants covering plywood, laminates, veneers, hardware, and more</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <CheckCircle2 className="text-primary flex-shrink-0" size={32} />
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">Expert Guidance</h3>
-                    <p className="text-muted-foreground">Professional team ready to help with selection and specifications</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <CheckCircle2 className="text-primary flex-shrink-0" size={32} />
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">Competitive Pricing</h3>
-                    <p className="text-muted-foreground">Wholesale and retail rates for all customer segments</p>
-                  </div>
-                </div>
+            {/* Tagline banner */}
+            <div className="mt-12 bg-primary text-primary-foreground rounded-xl p-10 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-balance">
+                Build Stronger. Design Better. Create Timeless Spaces — With Bajrang Plywood.
+              </h3>
+              <div className="flex flex-wrap items-center justify-center gap-2 mt-5 text-primary-foreground/80">
+                <MapPin size={18} />
+                <span>586, Bara Birwa, Near Hotel Piccadily, Kanpur Road, Lucknow, Uttar Pradesh — 226012</span>
               </div>
             </div>
           </div>
         </section>
-
-        {/* Team Section */}
-        <section className="py-20 bg-background">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Our Team</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { name: 'Rajesh Gupta', role: 'Owner & Founder', desc: 'Leading Bajrang Ply since 2004 with passion for quality', initials: 'RG' },
-                { name: 'Priya Singh', role: 'Product Manager', desc: 'Expert in sourcing premium materials and managing inventory', initials: 'PS' },
-                { name: 'Amit Kumar', role: 'Customer Relations', desc: '20 years of experience in customer service excellence', initials: 'AK' }
-              ].map((member, idx) => (
-                <div key={idx} className="bg-card rounded-lg shadow p-8 text-center hover:shadow-lg transition">
-                  <div className="w-24 h-24 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-primary-foreground text-2xl font-bold">{member.initials}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
-                  <p className="text-primary font-semibold mb-3">{member.role}</p>
-                  <p className="text-muted-foreground text-sm">{member.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Stats */}
-        <section className="bg-primary text-primary-foreground py-12">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold mb-2">20+</div>
-                <p>Years in Business</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">10,000+</div>
-                <p>Happy Customers</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">500+</div>
-                <p>Product Variants</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">100%</div>
-                <p>Satisfaction Guaranteed</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-background">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold text-foreground mb-6">Ready to Transform Your Space?</h2>
-            <p className="text-xl text-muted-foreground mb-8">Visit our showroom or connect with our experts for personalized recommendations</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/products" className="px-8 py-3 bg-primary text-primary-foreground rounded font-bold hover:bg-accent transition">
-                Explore Products
-              </Link>
-              <Link href="/#contact" className="px-8 py-3 border-2 border-primary text-primary rounded font-bold hover:bg-primary hover:text-primary-foreground transition">
-                Visit Us
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
+      </main>
 
       <SiteFooter />
     </>
