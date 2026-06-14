@@ -202,7 +202,7 @@ export default function ProductsPage() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60" />
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 mt-12">
           <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Our Catalogue</p>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Explore Our Products</h1>
           <p className="text-lg text-primary-foreground/85 max-w-2xl mx-auto leading-relaxed">
