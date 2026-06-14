@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Quote, Target, Eye, MapPin, ChevronRight } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { Reveal } from '@/components/scroll-animations'
 
 const tabs = [
   { id: 'overview', label: 'Overview' },
@@ -134,8 +135,9 @@ export default function AboutPage() {
           }}
           className="scroll-mt-40 py-16 md:py-20"
         >
-          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <Reveal direction="up" delay={0}>
+            <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+              <div>
               <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">
                 Bajrang Plywood
               </p>
@@ -181,8 +183,9 @@ export default function AboutPage() {
                 alt="Bajrang Plywood flush door collection"
                 className="rounded-lg shadow-lg w-full h-48 object-cover"
               />
+              </div>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         {/* Our Story */}
@@ -193,8 +196,9 @@ export default function AboutPage() {
           }}
           className="scroll-mt-40 py-16 md:py-20 bg-muted"
         >
-          <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
+          <Reveal direction="up" delay={0}>
+            <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
               <img
                 src="/about/showroom-3.jpg"
                 alt="Bajrang Plywood interior decor display"
@@ -217,8 +221,9 @@ export default function AboutPage() {
                   Over the years, Bajrang Plywood has earned the confidence of thousands of customers by consistently delivering products that combine durability, performance, and value — whether for modular furniture, wardrobes, kitchens, office interiors, retail spaces, hotels, or large-scale construction projects.
                 </p>
               </div>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         {/* Founder's Desk */}
