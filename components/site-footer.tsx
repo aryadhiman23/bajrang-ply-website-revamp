@@ -40,19 +40,32 @@ export function SiteFooter() {
           </div>
 
           <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm opacity-80">
-            <p className="text-sm text-gray-300">
-              &copy; {new Date().getFullYear()} Bajrang Plywood. All rights reserved.{" "}
-              <span className="mx-2 text-gray-500">|</span>
-              Designed By{" "}
-              <a
-                href="https://yourwebsite.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-purple-400 hover:text-purple-300 transition-colors duration-300 cursor-pointer"
-              >
-                Promotional Wizard
-              </a>
-            </p>
+            <div className="flex flex-col items-center gap-1 text-sm">
+              <p className="text-gray-300">
+                © {new Date().getFullYear()} Bajrang Plywood. All rights reserved.
+              </p>
+
+              <p className="text-xs text-gray-400">
+                Designed By{" "}
+                <a
+                  href="https://promotionalwizard.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="typing-text font-semibold text-purple-400"
+                >
+                  Promotional Wizard
+                </a>
+
+                <a
+                  href="https://promotionalwizard.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-purple-400 animate-pulse"
+                >
+                  Promotional Wizard
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </footer>
