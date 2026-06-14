@@ -55,15 +55,12 @@ export function SiteFooter() {
                 >
                   Promotional Wizard
                 </a> */}
-
-                <a
-                  href="https://promotionalwizard.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-purple-400 animate-pulse"
-                >
-                  Promotional Wizard
-                </a>
+               <div>
+                  <a href="https://promotionalwizard.com"
+                    target="_blank" rel="noopener noreferrer" className="font-semibold text-purple-400 animate-pulse">
+                    Promotional Wizard
+                  </a>
+               </div>
               </p>
             </div>
           </div>
