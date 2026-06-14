@@ -6,7 +6,7 @@ import { MessageCircle, MapPin, Phone } from 'lucide-react'
 export function SiteFooter() {
   return (
     <>
-      <footer className="bg-foreground text-primary-foreground py-12">
+      <footer className="bg-foreground text-primary-foreground py-12 pb-[7px]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
