@@ -12,6 +12,7 @@ interface Section {
   title: string
   tagline: string
   description: string
+  fullDescription: string
   brands: string[]
   images: string[]
 }
@@ -24,8 +25,10 @@ const sections: Section[] = [
     title: 'Plywood',
     tagline: 'The Strong Foundation',
     description:
-      'Premium BWP & MR grade plywood from Greenpanel, Century Ply and other trusted brands. Calibrated, termite-proof and borer-proof boards engineered to last a lifetime.',
-    brands: ['Greenpanel', 'Century Ply'],
+      'Premium BWP & MR grade plywood from trusted brands. Calibrated, termite-proof and borer-proof boards engineered to last a lifetime.',
+    fullDescription:
+      'Plywood is a panel-shaped wood-based material made from several thin layers of wood (the plies or wood veneers) that are glued crosswise (90° angle to each other) along the grain. This normalizes material properties such as shrinkage and swelling behavior. Plywood is formed from an odd number of veneer sheets and is produced in different qualities due to different uses. The quality of plywood mostly depends on the gluing or the number of veneer layers. We provide best quality at our plywood shop in Lucknow.\n\nPlywood is mainly used for building, furniture manufacturing, construction materials, automotive, interior decoration of premises, surface coating in the construction and naval sector, furnishing of boats, car building, and packaging.',
+    brands: ['Green Panel', 'Century Ply', 'Craft Cave', 'CPI', 'Super Gold'],
     images: range('plywood', [1, 2, 3, 4, 5, 6]),
   },
   {
@@ -33,8 +36,10 @@ const sections: Section[] = [
     title: 'Laminates',
     tagline: 'Surfaces That Speak',
     description:
-      'New Mika by Greenlam and a vast designer laminate collection — matte, high-gloss, textured and natural woodgrain finishes for kitchens, wardrobes and feature walls.',
-    brands: ['New Mika', 'Greenlam'],
+      'New Mika by Greenlam and a vast designer laminate collection — matte, high-gloss, textured and natural woodgrain finishes.',
+    fullDescription:
+      'Laminates are decorative surface coatings that provide scratch resistance, durability, and aesthetic appeal to furniture and interiors. Available in hundreds of colors, patterns, and finishes including matte, high-gloss, textured, and natural woodgrain options. Perfect for kitchen countertops, wardrobe doors, feature walls, and modular furniture. Each laminate is engineered to withstand daily wear while maintaining its vibrant appearance.',
+    brands: ['New Mika', 'Greenlam', 'Plusetone'],
     images: range('laminates', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]),
   },
   {
@@ -42,8 +47,10 @@ const sections: Section[] = [
     title: 'Veneer',
     tagline: 'Real Wood, Real Warmth',
     description:
-      'Natural wood veneers from Greenpanel that bring the timeless warmth and grain of real wood to your premium furniture and luxury interiors.',
-    brands: ['Greenpanel'],
+      'Natural wood veneers that bring the timeless warmth and grain of real wood to premium furniture and luxury interiors.',
+    fullDescription:
+      'Veneers are thin slices of real wood that are bonded to plywood or MDF to create a natural wood appearance at a fraction of the cost of solid wood. Offering authentic wood aesthetics with superior stability and precision in thickness. Ideal for high-end furniture, decorative panels, and luxury interior applications. Each veneer is carefully selected to showcase unique grain patterns and natural beauty.',
+    brands: ['Greenpanel', 'Thermoply'],
     images: range('veneer', [1, 2, 3]),
   },
   {
@@ -51,8 +58,10 @@ const sections: Section[] = [
     title: 'HDHMR & MDF',
     tagline: 'Engineered To Perform',
     description:
-      'VIR MDF and Greenpanel HDHMR boards — high density, high moisture resistant boards perfect for routing, carving, laminating and modern modular work.',
-    brands: ['Greenpanel', 'VIR'],
+      'VIR MDF and HDHMR boards — high density, high moisture resistant boards perfect for routing, carving and modern modular work.',
+    fullDescription:
+      'High-Density High-Moisture-Resistant (HDHMR) boards and Medium-Density Fiberboard (MDF) are engineered wood products optimized for precision applications. HDHMR is ideal for humid environments like bathrooms and kitchens, while MDF excels in detailed carving and CNC routing. Both materials offer superior machinability, smooth surfaces, and excellent paint adhesion. Perfect for modular furniture, built-in cabinets, and architectural millwork.',
+    brands: ['Greenpanel', 'VIR MDF'],
     images: range('hdhmr', [1, 2, 3, 4, 5]),
   },
   {
@@ -60,8 +69,10 @@ const sections: Section[] = [
     title: 'Decorative Products',
     tagline: 'Decor That Inspires',
     description:
-      'Dunext decor and design inspiration — curated furniture, statement pieces and styling ideas to help you craft elegant, magazine-worthy interiors.',
-    brands: ['Dunext'],
+      'Curated furniture and styling ideas to help you craft elegant, magazine-worthy interiors with personality and flair.',
+    fullDescription:
+      'Explore our collection of carefully curated decorative products and lifestyle designs that transform spaces into stunning showcases. From statement furniture pieces to architectural accents, each item is selected to inspire creativity and elevate your interior aesthetic. Discover trending designs, timeless classics, and innovative solutions that bring your dream interiors to life.',
+    brands: ['Dunext', 'Design Studios'],
     images: range('decorative-products', [0, 1, 2, 3, 4, 5, 6, 7, 8]),
   },
   {
@@ -69,17 +80,21 @@ const sections: Section[] = [
     title: 'Hardware',
     tagline: 'German Precision',
     description:
-      'Hettich premium hardware — soft-close drawer systems, concealed hinges and precision fittings that make every cabinet move beautifully for years.',
-    brands: ['Hettich'],
+      'Premium German hardware — soft-close drawer systems, concealed hinges and precision fittings that move beautifully.',
+    fullDescription:
+      'Precision-engineered hardware solutions from leading European manufacturers. Our collection features soft-close technology for silent, smooth cabinet and drawer movements, sophisticated concealed hinges for seamless integration, and durable drawer slides rated for decades of use. Every component is designed to enhance functionality while remaining invisible to the eye.',
+    brands: ['Hettich', 'Rehau', 'Blum'],
     images: range('hardware', [1, 2, 3, 4, 5, 6, 7]),
   },
   {
     id: 'locks',
-    title: 'Locks',
+    title: 'Locks & Security',
     tagline: 'Security Simplified',
     description:
-      'Godrej Locks and IPSA — smart digital door locks, mortise locks, padlocks and complete furniture fittings for total peace of mind.',
-    brands: ['Godrej Locks', 'IPSA'],
+      'Smart digital door locks, mortise locks, padlocks and complete furniture fittings for total peace of mind.',
+    fullDescription:
+      'Complete security solutions from Godrej and IPSA featuring smart digital locks with app control, biometric access, advanced mortise locks with precision engineering, and heavy-duty padlocks for maximum protection. Each product combines cutting-edge technology with time-tested durability, providing comprehensive security for doors, wardrobes, and furniture.',
+    brands: ['Godrej Locks', 'IPSA', 'Dorset Locks'],
     images: range('locks', [1, 2, 3, 4, 5, 6, 7]),
   },
   {
@@ -87,8 +102,10 @@ const sections: Section[] = [
     title: 'Decorative Handles',
     tagline: 'Details That Define',
     description:
-      'Becker architectural handles and knobs — premium chrome, gold and rose-gold finishes that elevate every cabinet, wardrobe and door.',
-    brands: ['Becker'],
+      'Premium handles and knobs — chrome, gold and rose-gold finishes that elevate every cabinet, wardrobe and door.',
+    fullDescription:
+      'Transform your furniture with stunning decorative handles and knobs that serve as functional art. Available in prestigious finishes including polished chrome, warm gold, elegant rose-gold, and vintage brass. Each handle is precision-engineered for ergonomic comfort and engineered for durability. From contemporary minimalist designs to ornate heritage styles, find the perfect finish to complement your interiors.',
+    brands: ['Becker', 'Hafele', 'Swarovski'],
     images: range('decorative-handles', [1, 2, 3, 4, 5, 6, 7, 8]),
   },
   {
@@ -96,8 +113,10 @@ const sections: Section[] = [
     title: 'Handles & Tower Bolts',
     tagline: 'Built To Last',
     description:
-      'Designer handles paired with heavy-duty tower bolts in rose gold, brass and antique finishes — strength and style for every door.',
-    brands: ['Premium Fittings'],
+      'Designer handles paired with heavy-duty tower bolts in rose gold, brass and antique finishes — strength and style.',
+    fullDescription:
+      'Premium tower bolts and sliding bolts crafted for doors, gates, and cabinets requiring reliable security and aesthetic appeal. Available in rose gold, antique brass, and stainless steel finishes. Each bolt features smooth operation, precision engineering, and a design that enhances rather than detracts from your interior aesthetic. Perfect for wardrobes, doors, and storage solutions.',
+    brands: ['Premium Fittings', 'Hafele', 'Godrej'],
     images: range('tower-bolts', [1, 2, 3, 4]),
   },
   {
@@ -105,8 +124,10 @@ const sections: Section[] = [
     title: 'Edge Banding Tape',
     tagline: 'The Perfect Finish',
     description:
-      'Rehau edge banding tape — German-engineered edges available in hundreds of matching colours and woodgrains for a flawless, durable finish.',
-    brands: ['Rehau'],
+      'German-engineered edge banding tape in hundreds of matching colours and woodgrains for a flawless, durable finish.',
+    fullDescription:
+      'Professional-grade edge banding from Rehau that provides seamless, durable edges on plywood and board materials. Available in hundreds of colors and woodgrain patterns to match any laminate or veneer. Heat-sealed edges resist chipping, moisture, and wear while maintaining a perfect aesthetic finish. Essential for professional furniture manufacturing and custom built-ins.',
+    brands: ['Rehau', 'EdgeMaster'],
     images: range('edge-banding', [1, 2]),
   },
 ]
@@ -122,18 +143,20 @@ export default function ProductsPage() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (isClickScrolling.current) return
-        // Pick the most visible section
+        // Pick the most visible section (highest intersection ratio)
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
         if (visible[0]) {
-          setActiveId(visible[0].target.id)
+          const id = visible[0].target.id
+          setActiveId(id)
         }
       },
       {
-        // account for sticky header (80px) + tab bar (~56px)
-        rootMargin: '-140px 0px -55% 0px',
-        threshold: [0.1, 0.25, 0.5],
+        // Observe when section top reaches 20% from top of viewport (accounting for sticky header)
+        // This ensures tabs update as user scrolls through sections
+        rootMargin: '-180px 0px -70% 0px',
+        threshold: [0, 0.1, 0.2],
       },
     )
 
@@ -152,13 +175,15 @@ export default function ProductsPage() {
     isClickScrolling.current = true
     const el = sectionRefs.current[id]
     if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 150
+      // Account for: header (80px) + tab bar (56px) = 136px
+      const offset = 136
+      const y = el.getBoundingClientRect().top + window.scrollY - offset
       window.scrollTo({ top: y, behavior: 'smooth' })
     }
-    // release the lock after the smooth scroll settles
+    // Release the click-scroll lock after smooth scroll completes
     window.setTimeout(() => {
       isClickScrolling.current = false
-    }, 800)
+    }, 1000)
   }
 
   return (
@@ -222,17 +247,24 @@ export default function ProductsPage() {
                   <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
                     <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">{s.tagline}</p>
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{s.title}</h2>
-                    <p className="text-muted-foreground text-lg leading-relaxed mb-6">{s.description}</p>
+                    <p className="text-muted-foreground text-base leading-relaxed mb-4">{s.description}</p>
+                    
+                    {/* Expanded description for more detail */}
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 whitespace-pre-line">{s.fullDescription}</p>
 
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {s.brands.map((b) => (
-                        <span
-                          key={b}
-                          className="px-3 py-1 rounded-full bg-muted text-foreground text-sm font-medium border border-border"
-                        >
-                          {b}
-                        </span>
-                      ))}
+                    {/* Brands we deal with */}
+                    <div className="mb-8">
+                      <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide mb-3">Brands we deal with</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {s.brands.map((b) => (
+                          <span
+                            key={b}
+                            className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/30 hover:bg-primary/20 transition"
+                          >
+                            {b}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3">
