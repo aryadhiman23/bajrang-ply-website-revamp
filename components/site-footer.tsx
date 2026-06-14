@@ -48,7 +48,7 @@ export function SiteFooter() {
                 href="https://yourwebsite.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-violet-700 hover:text-violet-300 transition-colors duration-300 cursor-pointer"
+                className="font-semibold text-indigo-600 hover:text-indigo-300 transition-colors duration-300 cursor-pointer"
               >
                 Promotional Wizard
               </a>
