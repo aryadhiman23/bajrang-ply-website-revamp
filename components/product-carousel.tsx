@@ -65,8 +65,8 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
                 key={src}
                 onClick={() => setCurrent(idx)}
                 aria-label={`Go to image ${idx + 1}`}
-                className={`shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition ${
-                  idx === current ? 'border-primary' : 'border-border opacity-60 hover:opacity-100'
+                className={`shrink-0 w-20 h-20 rounded-lg overflow-hidden transition ${
+                  idx === current ? '' : 'opacity-60 hover:opacity-100'
                 }`}
               >
                 <img src={src || '/placeholder.svg'} alt="" className="w-full h-full object-contain" />
