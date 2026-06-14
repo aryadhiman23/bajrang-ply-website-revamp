@@ -46,15 +46,15 @@ export function SiteFooter() {
               </p>
 
               <p className="text-xs text-gray-400">
-                Designed By{" "}
-                <a
+                Designed and Managed By{" "}
+                {/* <a
                   href="https://promotionalwizard.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="typing-text font-semibold text-purple-400"
                 >
                   Promotional Wizard
-                </a>
+                </a> */}
 
                 <a
                   href="https://promotionalwizard.com"
