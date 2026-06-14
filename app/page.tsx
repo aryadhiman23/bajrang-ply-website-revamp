@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Phone, MessageCircle, MapPin, Clock, Star, ChevronRight, Menu, X, LogIn, LayoutDashboard } from 'lucide-react'
 import { useState } from 'react'
 import { Reveal } from '@/components/scroll-animations'
+import { SiteFooter } from '@/components/site-footer'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -426,44 +427,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-primary-foreground py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-20 w-auto mb-4" />
-              <p className="text-sm opacity-80">Premium plywood and interior materials dealer in Lucknow</p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Products</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li><a href="#" className="hover:opacity-100">Plywood</a></li>
-                <li><a href="#" className="hover:opacity-100">Laminates</a></li>
-                <li><a href="#" className="hover:opacity-100">Veneers</a></li>
-                <li><a href="#" className="hover:opacity-100">Hardware</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li><a href="#about" className="hover:opacity-100">About Us</a></li>
-                <li><a href="#gallery" className="hover:opacity-100">Gallery</a></li>
-                <li><a href="#contact" className="hover:opacity-100">Contact</a></li>
-                <li><a href="#" className="hover:opacity-100">FAQs</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <p className="text-sm opacity-80 mb-2">📍 Lucknow, UP</p>
-              <p className="text-sm opacity-80 mb-2">📞 +91-XXXXX-XXXXX</p>
-              <p className="text-sm opacity-80">💬 WhatsApp Available</p>
-            </div>
-          </div>
-
-          <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm opacity-80">
-            <p>&copy; {new Date().getFullYear()} Bajrang Plywood. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       {/* Floating WhatsApp Button */}
       <button className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40">
