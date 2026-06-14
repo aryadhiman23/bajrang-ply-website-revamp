@@ -69,7 +69,7 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
                   idx === current ? 'border-primary' : 'border-border opacity-60 hover:opacity-100'
                 }`}
               >
-                <img src={src || '/placeholder.svg'} alt="" className="w-full h-full object-contain bg-muted" />
+                <img src={src || '/placeholder.svg'} alt="" className="w-full h-full object-contain" />
               </button>
             ))}
           </div>
