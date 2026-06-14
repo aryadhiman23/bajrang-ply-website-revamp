@@ -212,7 +212,7 @@ export default function ProductsPage() {
               key={s.id}
               data-tab={s.id}
               onClick={() => scrollToSection(s.id)}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition ${
+              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition cursor-pointer ${
                 activeId === s.id
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted text-foreground hover:bg-primary/10'

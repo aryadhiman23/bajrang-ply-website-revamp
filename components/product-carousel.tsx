@@ -19,7 +19,7 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
     <div className="w-full">
       <div className="relative">
         {/* Main image stage */}
-        <div className="relative bg-muted rounded-xl overflow-hidden border border-border aspect-[4/3] md:aspect-[16/9] flex items-center justify-center">
+        <div className="relative rounded-xl overflow-hidden aspect-[4/3] md:aspect-[16/9] flex items-center justify-center">
           {images.map((src, idx) => (
             <img
               key={src}
