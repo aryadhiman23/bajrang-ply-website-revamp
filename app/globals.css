@@ -10,6 +10,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbar for the product tab bar while keeping scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /*
   Put all animation rules inside @layer utilities so Tailwind v4
   cannot override them with its base/reset layers.

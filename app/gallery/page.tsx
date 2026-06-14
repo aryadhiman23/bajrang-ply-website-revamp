@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
 
 const galleryItems = [
   { id: 1, title: 'Modern Kitchen Design', category: 'Kitchen', image: '/images/gallery-01.jpg', desc: 'Premium plywood cabinets with glossy laminates' },
@@ -43,12 +45,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-card shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
-        </div>
-      </header>
+      <SiteHeader />
 
       <div className="mt-20 min-h-screen bg-background">
         <div className="max-w-7xl mx-auto px-4 py-12">
@@ -116,6 +113,8 @@ export default function GalleryPage() {
           </div>
         </div>
       </div>
+
+      <SiteFooter />
 
       {/* Lightbox Modal */}
       {selectedImage && (

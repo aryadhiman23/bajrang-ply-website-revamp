@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { Phone, MessageCircle, MapPin, Clock, Mail } from 'lucide-react'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -31,12 +33,7 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-card shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
-        </div>
-      </header>
+      <SiteHeader />
 
       <div className="mt-20 min-h-screen bg-background">
         {/* Hero Section */}
@@ -245,10 +242,7 @@ export default function ContactPage() {
         </section>
       </div>
 
-      {/* Floating WhatsApp Button */}
-      <button className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40">
-        <MessageCircle size={28} />
-      </button>
+      <SiteFooter />
     </>
   )
 }

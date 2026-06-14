@@ -1,7 +1,9 @@
 'use client'
 
-import { Phone, MessageCircle, ChevronLeft, Star } from 'lucide-react'
+import { Phone, MessageCircle, Star } from 'lucide-react'
 import Link from 'next/link'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
 
 const productDetails = {
   1: {
@@ -93,17 +95,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
   return (
     <>
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-card shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/products" className="text-primary hover:text-accent transition">
-              <ChevronLeft size={24} />
-            </Link>
-            <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-14 w-auto" />
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <div className="mt-20 min-h-screen bg-background">
         <div className="max-w-6xl mx-auto px-4 py-12">
@@ -269,10 +261,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      {/* Floating WhatsApp Button */}
-      <button className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40">
-        <MessageCircle size={28} />
-      </button>
+      <SiteFooter />
     </>
   )
 }

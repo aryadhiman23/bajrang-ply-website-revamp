@@ -2,17 +2,13 @@
 
 import Link from 'next/link'
 import { CheckCircle2, Award, Users, TrendingUp } from 'lucide-react'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
 
 export default function AboutPage() {
   return (
     <>
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-card shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
-          <a href="/" className="text-foreground hover:text-primary transition">← Back to Home</a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <div className="mt-20 min-h-screen bg-background">
         {/* Hero Section */}
@@ -212,6 +208,8 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
+
+      <SiteFooter />
     </>
   )
 }
