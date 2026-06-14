@@ -191,11 +191,21 @@ export default function ProductsPage() {
       <SiteHeader />
 
       {/* Page hero */}
-      <section className="mt-20 bg-foreground text-primary-foreground py-14">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+      <section 
+        className="mt-20 bg-foreground text-primary-foreground py-16 md:py-20 relative overflow-hidden"
+        style={{
+          backgroundImage: 'url(/products/hero-bg.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
           <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Our Catalogue</p>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Explore Our Products</h1>
-          <p className="text-lg text-primary-foreground/75 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-primary-foreground/85 max-w-2xl mx-auto leading-relaxed">
             From plywood and laminates to locks, hardware and decor — everything you need for your dream interior, all under one roof.
           </p>
         </div>
