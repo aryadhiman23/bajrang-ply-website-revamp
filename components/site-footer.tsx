@@ -45,7 +45,7 @@ export function SiteFooter() {
                 © {new Date().getFullYear()} Bajrang Plywood. All rights reserved.
               </p>
 
-              <div>_______</div>
+              <div>—</div>
 
               <p className="text-xs text-gray-400">
                 Designed and Managed By{" "}
