@@ -192,7 +192,7 @@ export default function ProductsPage() {
 
       {/* Page hero */}
       <section 
-        className="mt-20 bg-foreground text-primary-foreground py-16 md:py-20 relative overflow-hidden"
+        className="mt-20 bg-foreground text-primary-foreground py-16 md:py-20 relative overflow-hidden h-[420px]"
         style={{
           backgroundImage: 'url(/products/hero-bg.jpg)',
           backgroundSize: 'cover',
