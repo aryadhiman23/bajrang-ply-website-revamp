@@ -45,7 +45,7 @@ export function SiteFooter() {
                 © {new Date().getFullYear()} Bajrang Plywood. All rights reserved.
               </p>
 
-              <div>—</div>
+              <div className="w-[150px] border-t border-[#5f5f5f] my-3"></div>
 
               <p className="text-xs text-gray-400">
                 Designed and Managed By{" "}
@@ -57,12 +57,10 @@ export function SiteFooter() {
                 >
                   Promotional Wizard
                 </a> */}
-               <div>
-                  <a href="https://promotionalwizard.com"
-                    target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-bold text-purple-400 animate-pulse">
-                    Promotional Wizard
-                  </a>
-               </div>
+                <a href="https://promotionalwizard.com"
+                  target="_blank" rel="noopener noreferrer" className="font-semibold text-purple-400 animate-pulse">
+                  Promotional Wizard
+                </a>
               </p>
             </div>
           </div>
