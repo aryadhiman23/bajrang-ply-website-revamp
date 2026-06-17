@@ -10,7 +10,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Bajrang Ply - Premium Plywood & Interior Materials',
+  title: 'Bajrang Plywood - Premium Plywood & Interior Materials',
   description: 'One-stop shop for plywood, laminates, veneers, hardware & decorative interior materials in Lucknow. Wholesale & retail dealer. Call now for quotes & store visit.',
   generator: 'v0.app',
   icons: {

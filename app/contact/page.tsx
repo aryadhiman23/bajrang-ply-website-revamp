@@ -155,7 +155,6 @@ export default function ContactPage() {
                     <option value="">Select a subject</option>
                     <option value="product-inquiry">Product Inquiry</option>
                     <option value="bulk-order">Bulk Order</option>
-                    <option value="pricing">Pricing Information</option>
                     <option value="customization">Customization Request</option>
                     <option value="feedback">Feedback</option>
                     <option value="other">Other</option>

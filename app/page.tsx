@@ -14,7 +14,7 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-card shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-16 w-auto" />
+          <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-16 w-auto" />
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex gap-8 items-center">
@@ -186,7 +186,7 @@ export default function Home() {
       <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4">
           <Reveal direction="up" className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Why Choose Bajrang Ply?</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-4">Why Choose Bajrang Plywood?</h2>
             <p className="text-xl text-muted-foreground">Trusted by thousands of homeowners, designers & contractors</p>
           </Reveal>
 
@@ -221,9 +221,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'Wigwam E0 Plywood', price: 'Starting ₹500/sqft', rating: 5, image: '/images/product-plywood-wigwam.jpg' },
-              { name: 'Thermo Sheet Interiors', price: 'Starting ₹300/sqft', rating: 5, image: '/images/product-thermo-sheet.jpg' },
-              { name: 'Signature Doors', price: 'Starting ₹8,000/door', rating: 5, image: '/images/product-doors-signature.jpg' },
+              { name: 'Wigwam E0 Plywood', rating: 5, image: '/images/product-plywood-wigwam.jpg' },
+              { name: 'Thermo Sheet Interiors', rating: 5, image: '/images/product-thermo-sheet.jpg' },
+              { name: 'Signature Doors', rating: 5, image: '/images/product-doors-signature.jpg' },
             ].map((product, idx) => (
               <Reveal key={idx} direction={idx === 0 ? 'left' : idx === 2 ? 'right' : 'up'} delay={idx * 100}>
                 <div className="bg-card rounded-lg shadow hover:shadow-lg transition overflow-hidden h-full">
@@ -245,7 +245,6 @@ export default function Home() {
                         />
                       ))}
                     </div>
-                    <p className="text-muted-foreground mb-4">{product.price}</p>
                     <button className="w-full py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition font-semibold">
                       Enquire Now
                     </button>

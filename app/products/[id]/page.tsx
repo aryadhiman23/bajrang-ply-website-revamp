@@ -9,7 +9,6 @@ const productDetails = {
   1: {
     name: 'Wigwam E0 Plywood',
     category: 'Plywood',
-    price: '₹500-₹800/sqft',
     image: '/images/product-plywood-wigwam.jpg',
     rating: 5,
     reviews: 245,
@@ -43,14 +42,13 @@ const productDetails = {
   2: {
     name: 'Engineered Plywood',
     category: 'Plywood',
-    price: '₹300-₹500/sqft',
     image: '/images/product-plywood-breathe.jpg',
     rating: 4.5,
     reviews: 189,
-    description: 'Cost-effective engineered plywood with excellent durability and stability. Ideal for budget-conscious projects.',
+    description: 'Cost-effective engineered plywood with excellent durability and stability. Ideal for projects requiring reliable performance.',
     features: [
       'Good strength and dimensional stability',
-      'Economical pricing',
+      'High quality construction',
       'Easy to work with',
       'Suitable for wide range of applications',
       'Bonded with waterproof adhesive'
@@ -150,12 +148,8 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 <span className="text-muted-foreground">({product.reviews} reviews)</span>
               </div>
 
-              {/* Availability & Price */}
+              {/* Availability */}
               <div className="bg-muted rounded-lg p-4 mb-6">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-muted-foreground">Price</span>
-                  <span className="text-3xl font-bold text-primary">{product.price}</span>
-                </div>
                 <div className="flex items-center gap-2 text-green-600 font-semibold">
                   <span className="w-2 h-2 bg-green-600 rounded-full"></span>
                   {product.availability}

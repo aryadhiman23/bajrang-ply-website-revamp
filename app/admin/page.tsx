@@ -69,7 +69,7 @@ export default function AdminDashboard() {
         <div className="p-6 border-b border-border">
           <div className="flex items-center gap-2 mb-1">
             <LayoutDashboard size={20} className="text-primary" />
-            <h1 className="text-lg font-bold text-primary">Bajrang Ply</h1>
+            <h1 className="text-lg font-bold text-primary">Bajrang Plywood</h1>
           </div>
           <p className="text-xs text-muted-foreground">Admin Panel</p>
         </div>

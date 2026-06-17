@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
-              <img src="/images/bajrang-logo.png" alt="Bajrang Ply" className="h-20 w-auto mb-4" />
+              <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-20 w-auto mb-4" />
               <p className="text-sm opacity-80">Premium plywood and interior materials dealer in Lucknow</p>
             </div>
             <div>
