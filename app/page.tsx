@@ -17,14 +17,10 @@ export default function Home() {
           <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-16 w-auto" />
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex gap-4 items-center text-sm">
+          <nav className="hidden md:flex gap-8 items-center">
             <a href="/about" className="text-foreground hover:text-primary transition">About</a>
             <a href="/products" className="text-foreground hover:text-primary transition">Products</a>
-            <a href="/decoratives" className="text-foreground hover:text-primary transition">Decoratives</a>
-            <a href="/pvc-panels" className="text-foreground hover:text-primary transition">PVC Panels</a>
-            <a href="/brands" className="text-foreground hover:text-primary transition">Our Brands</a>
             <a href="/gallery" className="text-foreground hover:text-primary transition">Gallery</a>
-            <a href="/articles" className="text-foreground hover:text-primary transition">Articles</a>
             <a href="/contact" className="text-foreground hover:text-primary transition">Contact</a>
           </nav>
 
