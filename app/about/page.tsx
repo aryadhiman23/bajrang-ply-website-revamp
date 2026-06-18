@@ -146,10 +146,10 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Bajrang Plywood is one of the leading plywood, hardware, and decorative interior material suppliers in North India, proudly serving customers since 2013. Based in Lucknow, we have established ourselves as a trusted name in the industry by providing premium-quality products, competitive pricing, and dependable service.
+                  Bajrang Plywood is one of the leading plywood, hardware, and decorative interior material suppliers in <b>North India</b>, proudly serving customers <b>since 2013</b>. Based in Lucknow, we have established ourselves as a trusted name in the industry by providing premium-quality products, competitive pricing, and dependable service.
                 </p>
                 <p>
-                  Today, Bajrang Plywood supplies products across Uttar Pradesh, Uttarakhand, and major cities along the Nepal border region, while also catering to customers in various parts of India through a strong distribution network.
+                  Today, Bajrang Plywood supplies products across <b>Uttar Pradesh</b>, <b>Uttarakhand</b>, and <b>major cities along the Nepal border region</b>, while also catering to customers in various parts of India through a strong distribution network.
                 </p>
               </div>
 
