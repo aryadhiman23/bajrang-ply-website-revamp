@@ -87,8 +87,8 @@ export default function Home() {
         {/* Full-bleed background image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/home/hero-bg.jpg"
-            alt="Modern luxury interior with premium wood materials and design"
+            src="/images/hero-luxury-interior.jpg"
+            alt="Luxury interior with premium plywood and laminates"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-foreground/55" />
