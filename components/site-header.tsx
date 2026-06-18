@@ -7,7 +7,11 @@ import { useState } from 'react'
 const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/products', label: 'Products' },
+  { href: '/decoratives', label: 'Decoratives' },
+  { href: '/pvc-panels', label: 'PVC Panels' },
+  { href: '/brands', label: 'Our Brands' },
   { href: '/gallery', label: 'Gallery' },
+  { href: '/articles', label: 'Articles' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -16,13 +20,13 @@ export function SiteHeader() {
 
   return (
     <header className="fixed top-0 w-full bg-card shadow-sm z-50">
-      <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 py-1 flex items-center justify-between">
         <Link href="/">
-          <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-16 w-auto" />
+          <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-14 w-auto" />
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex gap-8 items-center">
+        <nav className="hidden md:flex gap-2 items-center text-xs overflow-x-auto flex-1 mx-2 justify-center">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className="text-foreground hover:text-primary transition">
               {link.label}
