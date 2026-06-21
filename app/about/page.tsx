@@ -6,6 +6,7 @@ import { Quote, Target, Eye, MapPin, ChevronRight } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/scroll-animations'
+import { siteConfig } from '@/lib/site-config'
 
 const tabs = [
   { id: 'overview', label: 'Overview' },
@@ -360,7 +361,7 @@ export default function AboutPage() {
               </h3>
               <div className="flex flex-wrap items-center justify-center gap-2 mt-5 text-primary-foreground/80">
                 <MapPin size={18} />
-                <span>586, Bara Birwa, Near Hotel Piccadily, Kanpur Road, Lucknow, Uttar Pradesh — 226012</span>
+                <span>{siteConfig.address.full}</span>
               </div>
             </div>
           </div>

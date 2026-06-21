@@ -4,6 +4,7 @@ import { Phone, MessageCircle, Star } from 'lucide-react'
 import Link from 'next/link'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { telHref, whatsappHref } from '@/lib/site-config'
 
 const productDetails = {
   1: {
@@ -176,14 +177,14 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 px-6 py-3 bg-primary text-primary-foreground rounded text-lg font-semibold hover:bg-accent transition flex items-center justify-center gap-2">
+                <a href={telHref} className="flex-1 px-6 py-3 bg-primary text-primary-foreground rounded text-lg font-semibold hover:bg-accent transition flex items-center justify-center gap-2">
                   <Phone size={20} />
                   Call Now for Quote
-                </button>
-                <button className="flex-1 px-6 py-3 bg-secondary text-secondary-foreground rounded text-lg font-semibold hover:opacity-90 transition flex items-center justify-center gap-2">
+                </a>
+                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex-1 px-6 py-3 bg-secondary text-secondary-foreground rounded text-lg font-semibold hover:opacity-90 transition flex items-center justify-center gap-2">
                   <MessageCircle size={20} />
                   WhatsApp Enquiry
-                </button>
+                </a>
               </div>
             </div>
           </div>

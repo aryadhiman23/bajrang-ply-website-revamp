@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Phone, MessageCircle, MapPin, Clock, Mail } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { siteConfig, telHref, whatsappHref, mapHref } from '@/lib/site-config'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -50,19 +51,24 @@ export default function ContactPage() {
         <section className="py-12 bg-background">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              <div className="bg-card rounded-lg p-6 shadow hover:shadow-lg transition text-center">
+              <a
+                href={mapHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-card rounded-lg p-6 shadow hover:shadow-lg transition text-center block"
+              >
                 <MapPin className="text-primary mx-auto mb-4" size={32} />
                 <h3 className="text-lg font-bold text-foreground mb-2">Location</h3>
-                <p className="text-muted-foreground text-sm">586, Bara Birwa<br/>Near Hotel Piccadilly<br/>Kanpur Road<br/>Lucknow - 226012</p>
-              </div>
+                <p className="text-muted-foreground text-sm">{siteConfig.address.line1}<br/>{siteConfig.address.line2}<br/>{siteConfig.address.line3}<br/>{siteConfig.address.city} - {siteConfig.address.pincode}</p>
+              </a>
 
               <div className="bg-card rounded-lg p-6 shadow hover:shadow-lg transition text-center">
                 <Phone className="text-primary mx-auto mb-4" size={32} />
                 <h3 className="text-lg font-bold text-foreground mb-2">Phone</h3>
                 <p className="text-muted-foreground text-sm">
-                  <a href="tel:+91XXXXXXXXXX" className="hover:text-primary">+91-XXXXX-XXXXX</a>
+                  <a href={telHref} className="hover:text-primary">{siteConfig.callNumber}</a>
                   <br/>
-                  <a href="tel:+91XXXXXXXXXX" className="hover:text-primary">+91-XXXXX-XXXXX</a>
+                  <span className="text-xs">Tap to call</span>
                 </p>
               </div>
 
@@ -70,7 +76,7 @@ export default function ContactPage() {
                 <MessageCircle className="text-primary mx-auto mb-4" size={32} />
                 <h3 className="text-lg font-bold text-foreground mb-2">WhatsApp</h3>
                 <p className="text-muted-foreground text-sm">
-                  <a href="https://wa.me/91XXXXXXXXXX" className="hover:text-primary">+91-XXXXX-XXXXX</a>
+                  <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="hover:text-primary">{siteConfig.whatsappNumber}</a>
                   <br/>
                   <span className="text-xs">Click to chat</span>
                 </p>
@@ -80,9 +86,9 @@ export default function ContactPage() {
                 <Clock className="text-primary mx-auto mb-4" size={32} />
                 <h3 className="text-lg font-bold text-foreground mb-2">Business Hours</h3>
                 <p className="text-muted-foreground text-sm">
-                  Mon-Sat: 10 AM - 7 PM<br/>
-                  Sun: 11 AM - 5 PM<br/>
-                  <span className="text-xs">Holidays: Closed</span>
+                  {siteConfig.hours.weekdays}<br/>
+                  {siteConfig.hours.sunday}<br/>
+                  <span className="text-xs">{siteConfig.hours.holidays}</span>
                 </p>
               </div>
             </div>
@@ -195,13 +201,18 @@ export default function ContactPage() {
         <section className="py-12 bg-background">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Find Us On Map</h2>
-            <div className="bg-muted rounded-lg overflow-hidden h-96 flex items-center justify-center">
+            <a
+              href={mapHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-muted rounded-lg overflow-hidden h-96 flex items-center justify-center hover:bg-muted/70 transition"
+            >
               <div className="text-center">
                 <MapPin className="text-primary mx-auto mb-4" size={48} />
-                <p className="text-muted-foreground">Map integration coming soon</p>
-                <p className="text-sm text-muted-foreground mt-2">Lucknow, Uttar Pradesh</p>
+                <p className="text-foreground font-semibold">{siteConfig.address.full}</p>
+                <p className="text-sm text-primary mt-3 font-medium underline">Open in Google Maps</p>
               </div>
-            </div>
+            </a>
           </div>
         </section>
 
@@ -214,7 +225,7 @@ export default function ContactPage() {
                 <Phone className="text-primary mx-auto mb-4" size={40} />
                 <h3 className="text-xl font-bold text-foreground mb-2">Call Us</h3>
                 <p className="text-muted-foreground mb-4">For immediate assistance, call us during business hours</p>
-                <a href="tel:+91XXXXXXXXXX" className="inline-block px-6 py-2 bg-primary text-primary-foreground rounded font-semibold hover:bg-accent transition">
+                <a href={telHref} className="inline-block px-6 py-2 bg-primary text-primary-foreground rounded font-semibold hover:bg-accent transition">
                   Call Now
                 </a>
               </div>
@@ -223,7 +234,7 @@ export default function ContactPage() {
                 <MessageCircle className="text-primary mx-auto mb-4" size={40} />
                 <h3 className="text-xl font-bold text-foreground mb-2">WhatsApp</h3>
                 <p className="text-muted-foreground mb-4">Quick messages and instant responses on WhatsApp</p>
-                <a href="https://wa.me/91XXXXXXXXXX" className="inline-block px-6 py-2 bg-green-500 text-white rounded font-semibold hover:bg-green-600 transition">
+                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-block px-6 py-2 bg-green-500 text-white rounded font-semibold hover:bg-green-600 transition">
                   Chat on WhatsApp
                 </a>
               </div>
@@ -232,7 +243,7 @@ export default function ContactPage() {
                 <Mail className="text-primary mx-auto mb-4" size={40} />
                 <h3 className="text-xl font-bold text-foreground mb-2">Visit Showroom</h3>
                 <p className="text-muted-foreground mb-4">Experience our full range in person at our store</p>
-                <a href="#" className="inline-block px-6 py-2 border-2 border-primary text-primary rounded font-semibold hover:bg-primary hover:text-primary-foreground transition">
+                <a href={mapHref} target="_blank" rel="noopener noreferrer" className="inline-block px-6 py-2 border-2 border-primary text-primary rounded font-semibold hover:bg-primary hover:text-primary-foreground transition">
                   Get Directions
                 </a>
               </div>

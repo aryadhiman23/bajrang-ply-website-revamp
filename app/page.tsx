@@ -1,10 +1,12 @@
 'use client'
 
-import Link from 'next/link'
-import { Phone, MessageCircle, MapPin, Clock, Star, ChevronRight, Menu, X, LogIn, LayoutDashboard } from 'lucide-react'
+// NOTE: `Link`, `LogIn` & `LayoutDashboard` are temporarily unused (Sign In / Admin disabled).
+// import Link from 'next/link'
+import { Phone, MessageCircle, MapPin, Clock, Star, ChevronRight, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Reveal } from '@/components/scroll-animations'
 import { SiteFooter } from '@/components/site-footer'
+import { siteConfig, telHref, whatsappHref, mapHref } from '@/lib/site-config'
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -26,6 +28,7 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex gap-3 items-center">
+            {/* TODO: Sign In & Admin are temporarily disabled — to be re-enabled later.
             <Link href="/sign-in" className="flex items-center gap-2 px-4 py-2 text-foreground hover:text-primary transition font-medium">
               <LogIn size={18} />
               Sign In
@@ -34,10 +37,11 @@ export default function Home() {
               <LayoutDashboard size={18} />
               Admin
             </Link>
-            <button className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
+            */}
+            <a href={telHref} className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
               <Phone size={18} />
               Call Now
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -57,6 +61,7 @@ export default function Home() {
               <a href="/products" className="text-foreground hover:text-primary transition">Products</a>
               <a href="/gallery" className="text-foreground hover:text-primary transition">Gallery</a>
               <a href="/contact" className="text-foreground hover:text-primary transition">Contact</a>
+              {/* TODO: Sign In & Admin are temporarily disabled — to be re-enabled later.
               <Link href="/sign-in" className="flex items-center gap-2 text-foreground hover:text-primary transition font-medium">
                 <LogIn size={18} />
                 Sign In
@@ -65,14 +70,15 @@ export default function Home() {
                 <LayoutDashboard size={18} />
                 Admin Panel
               </Link>
-              <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
+              */}
+              <a href={telHref} className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
                 <Phone size={18} />
                 Call Now
-              </button>
-              <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded hover:opacity-90 transition">
+              </a>
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded hover:opacity-90 transition">
                 <MessageCircle size={18} />
                 WhatsApp
-              </button>
+              </a>
             </nav>
           </div>
         )}
@@ -100,14 +106,14 @@ export default function Home() {
               Your complete one-stop shop for laminates, veneers, hardware, charcoal panels and decorative surfaces — all under one roof in Lucknow.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 bg-primary text-primary-foreground rounded text-lg font-semibold hover:bg-accent transition flex items-center justify-center gap-2">
+              <a href={telHref} className="px-8 py-4 bg-primary text-primary-foreground rounded text-lg font-semibold hover:bg-accent transition flex items-center justify-center gap-2">
                 <Phone size={20} />
                 Call Now
-              </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur border border-white/30 text-white rounded text-lg font-semibold hover:bg-white/20 transition flex items-center justify-center gap-2">
+              </a>
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-white/10 backdrop-blur border border-white/30 text-white rounded text-lg font-semibold hover:bg-white/20 transition flex items-center justify-center gap-2">
                 <MessageCircle size={20} />
                 WhatsApp
-              </button>
+              </a>
               <a href="#products" className="px-8 py-4 border-2 border-primary text-primary rounded text-lg font-semibold hover:bg-primary hover:text-primary-foreground transition flex items-center justify-center gap-2">
                 Explore Products
                 <ChevronRight size={20} />
@@ -361,36 +367,36 @@ export default function Home() {
             <Reveal direction="up" delay={0}>
               <div className="flex flex-col items-center">
                 <MapPin size={48} className="mb-4" />
-                <p className="text-lg">586, Bara Birwa, Near Hotel Piccadilly<br />Kanpur Road, Lucknow - 226012</p>
+                <p className="text-lg">{siteConfig.address.line1}, {siteConfig.address.line2}<br />{siteConfig.address.line3}, {siteConfig.address.city} - {siteConfig.address.pincode}</p>
               </div>
             </Reveal>
             <Reveal direction="up" delay={120}>
               <div className="flex flex-col items-center">
                 <Phone size={48} className="mb-4" />
-                <p className="text-lg"><strong>Call:</strong><br />+91-XXXXX-XXXXX</p>
+                <p className="text-lg"><strong>Call:</strong><br />{siteConfig.callNumber}</p>
               </div>
             </Reveal>
             <Reveal direction="up" delay={240}>
               <div className="flex flex-col items-center">
                 <Clock size={48} className="mb-4" />
-                <p className="text-lg"><strong>Hours:</strong><br />Mon-Sat: 10 AM - 7 PM<br />Sun: 11 AM - 5 PM</p>
+                <p className="text-lg"><strong>Hours:</strong><br />{siteConfig.hours.weekdays}<br />{siteConfig.hours.sunday}</p>
               </div>
             </Reveal>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-3 bg-primary-foreground text-primary rounded font-bold hover:opacity-90 transition flex items-center justify-center gap-2">
+            <a href={telHref} className="px-8 py-3 bg-primary-foreground text-primary rounded font-bold hover:opacity-90 transition flex items-center justify-center gap-2">
               <Phone size={20} />
               Call Now
-            </button>
-            <button className="px-8 py-3 bg-primary-foreground text-primary rounded font-bold hover:opacity-90 transition flex items-center justify-center gap-2">
+            </a>
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-primary-foreground text-primary rounded font-bold hover:opacity-90 transition flex items-center justify-center gap-2">
               <MessageCircle size={20} />
               WhatsApp
-            </button>
-            <button className="px-8 py-3 border-2 border-primary-foreground text-primary-foreground rounded font-bold hover:bg-primary-foreground hover:text-primary transition flex items-center justify-center gap-2">
+            </a>
+            <a href={mapHref} target="_blank" rel="noopener noreferrer" className="px-8 py-3 border-2 border-primary-foreground text-primary-foreground rounded font-bold hover:bg-primary-foreground hover:text-primary transition flex items-center justify-center gap-2">
               <MapPin size={20} />
               Get Directions
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -429,9 +435,15 @@ export default function Home() {
       <SiteFooter />
 
       {/* Floating WhatsApp Button */}
-      <button className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40">
+      <a
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40"
+      >
         <MessageCircle size={28} />
-      </button>
+      </a>
     </>
   )
 }

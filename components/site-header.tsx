@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { Phone, MessageCircle, Menu, X, LogIn, LayoutDashboard } from 'lucide-react'
+// NOTE: LogIn & LayoutDashboard are temporarily unused (Sign In / Admin disabled).
+import { Phone, MessageCircle, Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { telHref, whatsappHref } from '@/lib/site-config'
 
 const navLinks = [
   { href: '/about', label: 'About' },
@@ -32,6 +34,7 @@ export function SiteHeader() {
 
         {/* CTA Buttons */}
         <div className="hidden md:flex gap-3 items-center">
+          {/* TODO: Sign In & Admin are temporarily disabled — to be re-enabled later.
           <Link href="/sign-in" className="flex items-center gap-2 px-4 py-2 text-foreground hover:text-primary transition font-medium">
             <LogIn size={18} />
             Sign In
@@ -40,7 +43,8 @@ export function SiteHeader() {
             <LayoutDashboard size={18} />
             Admin
           </Link>
-          <a href="tel:+910000000000" className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
+          */}
+          <a href={telHref} className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
             <Phone size={18} />
             Call Now
           </a>
@@ -65,6 +69,7 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
+            {/* TODO: Sign In & Admin are temporarily disabled — to be re-enabled later.
             <Link href="/sign-in" className="flex items-center gap-2 text-foreground hover:text-primary transition font-medium">
               <LogIn size={18} />
               Sign In
@@ -73,11 +78,12 @@ export function SiteHeader() {
               <LayoutDashboard size={18} />
               Admin Panel
             </Link>
-            <a href="tel:+910000000000" className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
+            */}
+            <a href={telHref} className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-accent transition">
               <Phone size={18} />
               Call Now
             </a>
-            <a href="https://wa.me/910000000000" className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded hover:opacity-90 transition">
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded hover:opacity-90 transition">
               <MessageCircle size={18} />
               WhatsApp
             </a>

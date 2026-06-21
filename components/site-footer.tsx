@@ -2,6 +2,23 @@
 
 import Link from 'next/link'
 import { MessageCircle, MapPin, Phone } from 'lucide-react'
+import { siteConfig, telHref, whatsappHref } from '@/lib/site-config'
+
+/* Brand glyphs (lucide build here lacks Instagram/Facebook icons) */
+function InstagramIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.16a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" />
+    </svg>
+  )
+}
+function FacebookIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M9.1 23.69v-7.98H6.63v-3.67H9.1v-1.58c0-4.08 1.85-5.98 5.86-5.98.4 0 .95.04 1.47.1.51.07.96.16 1.14.2v3.32a8.6 8.6 0 0 0-.65-.03c-.32-.01-.56-.01-.73-.01-.71 0-1.26.1-1.68.31a1.69 1.69 0 0 0-.68.62c-.26.42-.37 1-.37 1.75v1.3h3.92l-.39 2.1-.29 1.56h-3.24v8.25C19.4 23.24 24 18.18 24 12.04 24 5.42 18.63.04 12 .04S0 5.42 0 12.04c0 5.63 3.87 10.35 9.1 11.65z" />
+    </svg>
+  )
+}
 
 export function SiteFooter() {
   return (
@@ -10,8 +27,38 @@ export function SiteFooter() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
-              <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-20 w-auto mb-4" />
-              <p className="text-sm opacity-80">Premium plywood and interior materials dealer in Lucknow</p>
+              <img src="/images/bajrang-logo.png" alt={siteConfig.brandName} className="h-20 w-auto mb-4" />
+              <p className="text-sm opacity-80">{siteConfig.tagline}</p>
+              {/* Social links */}
+              <div className="flex items-center gap-3 mt-4">
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition"
+                >
+                  <InstagramIcon size={18} />
+                </a>
+                <a
+                  href={siteConfig.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition"
+                >
+                  <FacebookIcon size={18} />
+                </a>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition"
+                >
+                  <MessageCircle size={18} />
+                </a>
+              </div>
             </div>
             <div>
               <h4 className="font-bold mb-4">Products</h4>
@@ -33,9 +80,25 @@ export function SiteFooter() {
             </div>
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
-              <p className="text-sm opacity-80 mb-2 flex items-center gap-2"><MapPin size={14} /> Lucknow, UP</p>
-              <p className="text-sm opacity-80 mb-2 flex items-center gap-2"><Phone size={14} /> +91-XXXXX-XXXXX</p>
-              <p className="text-sm opacity-80 flex items-center gap-2"><MessageCircle size={14} /> WhatsApp Available</p>
+              <a
+                href={siteConfig.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm opacity-80 mb-2 flex items-start gap-2 hover:opacity-100"
+              >
+                <MapPin size={14} className="mt-0.5 shrink-0" /> {siteConfig.address.full}
+              </a>
+              <a href={telHref} className="text-sm opacity-80 mb-2 flex items-center gap-2 hover:opacity-100">
+                <Phone size={14} /> {siteConfig.callNumber}
+              </a>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm opacity-80 flex items-center gap-2 hover:opacity-100"
+              >
+                <MessageCircle size={14} /> {siteConfig.whatsappNumber}
+              </a>
             </div>
           </div>
 
@@ -69,7 +132,9 @@ export function SiteFooter() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/910000000000"
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
         className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40"
       >

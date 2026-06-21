@@ -6,6 +6,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { ProductCarousel } from '@/components/product-carousel'
 import { Reveal } from '@/components/scroll-animations'
+import { telHref, whatsappHref } from '@/lib/site-config'
 
 interface Section {
   id: string
@@ -279,14 +280,16 @@ export default function ProductsPage() {
 
                     <div className="flex flex-col sm:flex-row gap-3">
                       <a
-                        href="tel:+910000000000"
+                        href={telHref}
                         className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded font-semibold hover:bg-accent transition"
                       >
                         <Phone size={18} />
                         Enquire Now
                       </a>
                       <a
-                        href="https://wa.me/910000000000"
+                        href={whatsappHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded font-semibold hover:bg-primary hover:text-primary-foreground transition"
                       >
                         <MessageCircle size={18} />
