@@ -1,12 +1,21 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Phone, MessageCircle } from 'lucide-react'
+import { Phone } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { ProductCarousel } from '@/components/product-carousel'
 import { Reveal } from '@/components/scroll-animations'
 import { telHref, whatsappHref } from '@/lib/site-config'
+
+/* Brand glyph for WhatsApp */
+function WhatsAppIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.6 14.3c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.2.4-.9 1.1-1.1 1.3-.2.3-.5.3-.9.1-1.8-.9-2.9-1.6-4.1-3.7-.3-.5.3-1.5.1-2 0-.4-1.1-2.6-1.5-3.6-.3-.8-.6-.7-1-.7-.3 0-.6 0-.9 0-.3 0-.8.2-1.2.6-1.4 1.4-1.8 3.4-1.6 5.3.3 2.7 1.9 5.3 4.6 7.1 2 1.2 3.6 1.5 5.1 1.8 1.1.2 2.2 0 3.1-.9 1.1-1.1 1.4-2.7 1.1-3.8-.3-.9-1.1-1.5-1.5-1.7zm8-4.3C21.3 5 17.2 1 12 1 6.5 1 2 5.5 2 11s4.5 10 10 10c1.8 0 3.5-.4 5.1-1.3l5.5 1.8c.5.2 1 .1 1.3-.2.3-.3.4-.8.2-1.3l-1.8-5.5c.8-1.5 1.3-3.2 1.3-5z" />
+    </svg>
+  )
+}
 
 interface Section {
   id: string
@@ -292,7 +301,7 @@ export default function ProductsPage() {
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded font-semibold hover:bg-primary hover:text-primary-foreground transition"
                       >
-                        <MessageCircle size={18} />
+                        <WhatsAppIcon size={18} />
                         WhatsApp
                       </a>
                     </div>

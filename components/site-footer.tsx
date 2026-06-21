@@ -19,6 +19,13 @@ function FacebookIcon({ size = 18 }: { size?: number }) {
     </svg>
   )
 }
+function WhatsAppIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.6 14.3c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.2.4-.9 1.1-1.1 1.3-.2.3-.5.3-.9.1-1.8-.9-2.9-1.6-4.1-3.7-.3-.5.3-1.5.1-2 0-.4-1.1-2.6-1.5-3.6-.3-.8-.6-.7-1-.7-.3 0-.6 0-.9 0-.3 0-.8.2-1.2.6-1.4 1.4-1.8 3.4-1.6 5.3.3 2.7 1.9 5.3 4.6 7.1 2 1.2 3.6 1.5 5.1 1.8 1.1.2 2.2 0 3.1-.9 1.1-1.1 1.4-2.7 1.1-3.8-.3-.9-1.1-1.5-1.5-1.7zm8-4.3C21.3 5 17.2 1 12 1 6.5 1 2 5.5 2 11s4.5 10 10 10c1.8 0 3.5-.4 5.1-1.3l5.5 1.8c.5.2 1 .1 1.3-.2.3-.3.4-.8.2-1.3l-1.8-5.5c.8-1.5 1.3-3.2 1.3-5z" />
+    </svg>
+  )
+}
 
 export function SiteFooter() {
   return (
@@ -56,7 +63,7 @@ export function SiteFooter() {
                   aria-label="WhatsApp"
                   className="w-9 h-9 flex items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition"
                 >
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={18} />
                 </a>
               </div>
             </div>
@@ -97,7 +104,7 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="text-sm opacity-80 flex items-center gap-2 hover:opacity-100"
               >
-                <MessageCircle size={14} /> {siteConfig.whatsappNumber}
+                <WhatsAppIcon size={14} /> {siteConfig.whatsappNumber}
               </a>
             </div>
           </div>
@@ -138,7 +145,7 @@ export function SiteFooter() {
         aria-label="Chat on WhatsApp"
         className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40"
       >
-        <MessageCircle size={28} />
+        <WhatsAppIcon size={28} />
       </a>
     </>
   )

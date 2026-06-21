@@ -1,10 +1,19 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, MessageCircle, MapPin, Clock, Mail } from 'lucide-react'
+import { Phone, MapPin, Clock, Mail } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { siteConfig, telHref, whatsappHref, mapHref } from '@/lib/site-config'
+
+/* Brand glyph for WhatsApp */
+function WhatsAppIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.6 14.3c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.2.4-.9 1.1-1.1 1.3-.2.3-.5.3-.9.1-1.8-.9-2.9-1.6-4.1-3.7-.3-.5.3-1.5.1-2 0-.4-1.1-2.6-1.5-3.6-.3-.8-.6-.7-1-.7-.3 0-.6 0-.9 0-.3 0-.8.2-1.2.6-1.4 1.4-1.8 3.4-1.6 5.3.3 2.7 1.9 5.3 4.6 7.1 2 1.2 3.6 1.5 5.1 1.8 1.1.2 2.2 0 3.1-.9 1.1-1.1 1.4-2.7 1.1-3.8-.3-.9-1.1-1.5-1.5-1.7zm8-4.3C21.3 5 17.2 1 12 1 6.5 1 2 5.5 2 11s4.5 10 10 10c1.8 0 3.5-.4 5.1-1.3l5.5 1.8c.5.2 1 .1 1.3-.2.3-.3.4-.8.2-1.3l-1.8-5.5c.8-1.5 1.3-3.2 1.3-5z" />
+    </svg>
+  )
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -73,7 +82,7 @@ export default function ContactPage() {
               </div>
 
               <div className="bg-card rounded-lg p-6 shadow hover:shadow-lg transition text-center">
-                <MessageCircle className="text-primary mx-auto mb-4" size={32} />
+                <WhatsAppIcon size={32} className="text-primary mx-auto mb-4" />
                 <h3 className="text-lg font-bold text-foreground mb-2">WhatsApp</h3>
                 <p className="text-muted-foreground text-sm">
                   <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="hover:text-primary">{siteConfig.whatsappNumber}</a>
@@ -231,7 +240,7 @@ export default function ContactPage() {
               </div>
 
               <div className="bg-card rounded-lg p-8 text-center shadow hover:shadow-lg transition">
-                <MessageCircle className="text-primary mx-auto mb-4" size={40} />
+                <WhatsAppIcon size={40} className="text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-foreground mb-2">WhatsApp</h3>
                 <p className="text-muted-foreground mb-4">Quick messages and instant responses on WhatsApp</p>
                 <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-block px-6 py-2 bg-green-500 text-white rounded font-semibold hover:bg-green-600 transition">
