@@ -444,7 +444,7 @@ export default function Home() {
       <SiteFooter />
 
       {/* Floating WhatsApp Button */}
-      <a
+      {/* <a
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
@@ -452,7 +452,7 @@ export default function Home() {
         className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40"
       >
         <WhatsAppIcon size={28} />
-      </a>
+      </a> */}
     </>
   )
 }
