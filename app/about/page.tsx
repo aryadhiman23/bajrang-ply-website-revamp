@@ -157,8 +157,8 @@ export default function AboutPage() {
               <div className="grid grid-cols-3 gap-4 mt-8">
                 {[
                   { value: '2013', label: 'Serving Since' },
-                  { value: '10+', label: 'Years Experience' },
-                  { value: '3+', label: 'States Covered' },
+                  { value: '13+', label: 'Years Experience' },
+                  { value: '1000+', label: 'Product Variants' },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-muted rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold text-primary">{stat.value}</div>

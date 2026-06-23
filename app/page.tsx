@@ -137,7 +137,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold">20+</div>
+              <div className="text-3xl font-bold">13+</div>
               <p className="text-sm mt-2">Years Experience</p>
             </div>
             <div>
@@ -145,7 +145,7 @@ export default function Home() {
               <p className="text-sm mt-2">Happy Customers</p>
             </div>
             <div>
-              <div className="text-3xl font-bold">500+</div>
+              <div className="text-3xl font-bold">1000+</div>
               <p className="text-sm mt-2">Product Variants</p>
             </div>
             <div>
