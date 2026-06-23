@@ -239,7 +239,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'Wigwam E0 Plywood', rating: 5, image: '/images/product-plywood-wigwam.jpg' },
+              { name: 'Smart Locks', rating: 5, image: '/images/product-smart-lock.jpeg' },
               { name: 'Premium Plywood Products', rating: 5, image: '/images/product-thermo-sheet.jpg' },
               { name: 'Signature Doors', rating: 5, image: '/images/product-doors-signature.jpg' },
             ].map((product, idx) => (
