@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.png',
+        url: '/favicon.ico',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/favicon.png',
+        url: '/favicon.ico',
         media: '(prefers-color-scheme: dark)',
       },
       {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         type: 'image/svg+xml',
       },
     ],
-    apple: '/favicon.png',
+    apple: '/favicon.ico',
   },
 }
 
