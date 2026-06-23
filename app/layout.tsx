@@ -14,21 +14,8 @@ export const metadata: Metadata = {
   description: 'One-stop shop for plywood, laminates, veneers, hardware & decorative interior materials in Lucknow. Wholesale & retail dealer. Call now for quotes & store visit.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/favicon.ico',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: 'public/favicon.ico',
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 }
 
