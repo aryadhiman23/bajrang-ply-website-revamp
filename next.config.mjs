@@ -12,12 +12,17 @@ const nextConfig = {
     return [
       {
         source: '/plywood-dealers-in-lucknow',
-        destination: '/about',
+        destination: '/products',
         permanent: true,
       },
       {
         source: '/plywood-wholesale-dealers',
-        destination: '/products',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/plywood-price-in-lucknow',
+        destination: '/contact',
         permanent: true,
       },
     ]
