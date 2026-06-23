@@ -157,8 +157,8 @@ export default function AboutPage() {
               <div className="grid grid-cols-3 gap-4 mt-8">
                 {[
                   { value: '2013', label: 'Serving Since' },
-                  { value: '10+', label: 'Years Experience' },
-                  { value: '3+', label: 'States Covered' },
+                  { value: '13+', label: 'Years Experience' },
+                  { value: '1000+', label: 'Product Variants' },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-muted rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold text-primary">{stat.value}</div>
@@ -201,7 +201,7 @@ export default function AboutPage() {
             <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
               <img
-                src="/about/showroom-3.jpg"
+                src="/about/showroom-5.jpeg"
                 alt="Bajrang Plywood interior decor display"
                 className="rounded-lg shadow-lg w-full h-[420px] object-cover"
               />

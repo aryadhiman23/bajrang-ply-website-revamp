@@ -38,8 +38,8 @@ export const siteConfig = {
 
   /** Business hours */
   hours: {
-    weekdays: 'Mon-Sat: 10 AM - 7 PM',
-    sunday: 'Sun: 11 AM - 5 PM',
+    weekdays: 'Mon-Sun: 10:00 AM - 8:00 PM',
+    // sunday: 'Sun: 11 AM - 5 PM',
     holidays: 'Holidays: Closed',
   },
 

@@ -254,3 +254,7 @@ html {
     border-color: transparent;
   }
 }
+
+  .h-56 {
+    height: calc(.44rem * 56);
+  }
