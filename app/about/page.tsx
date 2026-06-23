@@ -201,7 +201,7 @@ export default function AboutPage() {
             <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
               <img
-                src="/about/showroom-3.jpg"
+                src="/about/showroom-5.jpeg"
                 alt="Bajrang Plywood interior decor display"
                 className="rounded-lg shadow-lg w-full h-[420px] object-cover"
               />
