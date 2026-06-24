@@ -37,16 +37,16 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
               <button
                 onClick={goPrev}
                 aria-label="Previous image"
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-card text-foreground shadow-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition z-10"
+                className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-9 h-9 md:w-11 md:h-11 rounded-full bg-card text-foreground shadow-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition z-10"
               >
-                <ChevronLeft size={24} />
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
               </button>
               <button
                 onClick={goNext}
                 aria-label="Next image"
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-card text-foreground shadow-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition z-10"
+                className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-9 h-9 md:w-11 md:h-11 rounded-full bg-card text-foreground shadow-lg border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition z-10"
               >
-                <ChevronRight size={24} />
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
               </button>
 
               {/* Counter badge */}
@@ -65,8 +65,8 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
                 key={src}
                 onClick={() => setCurrent(idx)}
                 aria-label={`Go to image ${idx + 1}`}
-                className={`shrink-0 w-20 h-20 rounded-lg overflow-hidden transition ${
-                  idx === current ? '' : 'opacity-60 hover:opacity-100'
+                className={`shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 transition ${
+                  idx === current ? 'border-primary' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
                 <img src={src || '/placeholder.svg'} alt="" className="w-full h-full object-contain" />

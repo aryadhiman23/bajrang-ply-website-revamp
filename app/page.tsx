@@ -25,7 +25,7 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-card shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-          <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-16 w-auto" />
+          <img src="/images/bajrang-logo.png" alt="Bajrang Plywood" className="h-12 sm:h-14 md:h-16 w-auto" />
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex gap-8 items-center">
@@ -105,16 +105,16 @@ export default function Home() {
           <div className="absolute inset-0 bg-foreground/55" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full py-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full py-16 sm:py-20 md:py-24">
           <div className="max-w-2xl">
             {/* <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">More Than Just Plywood</p> */}
-            <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-4 font-serif italic">
+            <p className="text-primary font-semibold tracking-widest uppercase text-xs sm:text-sm mb-3 sm:mb-4 font-serif italic">
               More Than Just Plywood
             </p>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight text-balance">
               Premium Plywood&#44; Surfaces &amp; Interior Materials
             </h1>
-            <p className="text-lg text-white/80 mb-10 leading-relaxed">
+            <p className="text-base sm:text-lg text-white/80 mb-8 sm:mb-10 leading-relaxed">
               Your complete one-stop shop for laminates, veneers, hardware, charcoal panels and decorative surfaces — all under one roof in Lucknow.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
