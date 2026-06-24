@@ -372,3 +372,10 @@ export default function AboutPage() {
     </>
   )
 }
+
+
+// In /about page
+export const metadata = {
+  title: "About Us — Est. 2013 | Bajrang Plywood Lucknow",
+  description: "Founded in 2013 by Mr. Anmol Agarwal, Bajrang Plywood is North India's trusted supplier of premium interior materials. Serving UP, Uttarakhand & beyond.",
+}

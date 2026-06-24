@@ -459,3 +459,9 @@ export default function Home() {
     </>
   )
 }
+
+// In your homepage file (app/page.tsx or pages/index.tsx)
+export const metadata = {
+  title: "Bajrang Plywood — Premium Interior Materials in Lucknow",
+  description: "Premium plywood, laminates, veneers & hardware in Lucknow. 13+ years, 1000+ variants. Visit our showroom on Kanpur Road or call for a quote.",
+}

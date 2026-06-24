@@ -158,3 +158,9 @@ export default function GalleryPage() {
     </>
   )
 }
+
+// In /gallery page
+export const metadata = {
+  title: "Project Gallery — Kitchen, Wardrobe & Interiors | Bajrang Plywood",
+  description: "See real kitchen, wardrobe, living room & office projects completed using Bajrang Plywood materials. Get inspired for your next interior design project.",
+}

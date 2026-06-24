@@ -317,3 +317,10 @@ export default function ProductsPage() {
     </>
   )
 }
+
+
+// In /products page (app/products/page.tsx)
+export const metadata = {
+  title: "Our Products — Plywood, Laminates, Hardware | Bajrang Plywood",
+  description: "Shop plywood, laminates, HDHMR, MDF, hardware, locks & edge banding at Bajrang Plywood Lucknow. Brands: Century Ply, Greenlam, Hettich, Godrej & more.",
+}

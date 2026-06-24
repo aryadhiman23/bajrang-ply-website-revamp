@@ -265,3 +265,10 @@ export default function ContactPage() {
     </>
   )
 }
+
+// In /contact page
+export const metadata = {
+  title: "Contact Us — Lucknow Showroom | Bajrang Plywood",
+  description: "Contact Bajrang Plywood in Lucknow — call, WhatsApp, or visit our store at 586 Bara Birwa, Kanpur Road. Open Mon–Sun, 10 AM to 8 PM.",
+}
+
