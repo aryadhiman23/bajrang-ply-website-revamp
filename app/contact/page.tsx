@@ -96,7 +96,7 @@ export default function ContactPage() {
                 <h3 className="text-lg font-bold text-foreground mb-2">Business Hours</h3>
                 <p className="text-muted-foreground text-sm">
                   {siteConfig.hours.weekdays}<br/>
-                  {siteConfig.hours.sunday}<br/>
+                  {/* {siteConfig.hours.sunday}<br/> */}
                   <span className="text-xs">{siteConfig.hours.holidays}</span>
                 </p>
               </div>
