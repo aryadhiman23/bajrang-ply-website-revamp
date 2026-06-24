@@ -185,9 +185,8 @@ export default function ProductsPage() {
     isClickScrolling.current = true
     const el = sectionRefs.current[id]
     if (el) {
-      // Account for: header (~64px mobile / ~80px desktop) + tab bar (~48px mobile / ~56px desktop)
-      const isMobile = window.innerWidth < 768
-      const offset = isMobile ? 120 : 136
+      // Account for: header (80px) + tab bar (56px) = 136px
+      const offset = 136
       const y = el.getBoundingClientRect().top + window.scrollY - offset
       window.scrollTo({ top: y, behavior: 'smooth' })
     }
@@ -202,8 +201,8 @@ export default function ProductsPage() {
       <SiteHeader />
 
       {/* Page hero */}
-      <section
-        className="mt-20 bg-foreground text-primary-foreground relative overflow-hidden min-h-[320px] md:min-h-[420px] flex items-center"
+      <section 
+        className="mt-20 bg-foreground text-primary-foreground py-16 md:py-20 relative overflow-hidden h-[420px]"
         style={{
           backgroundImage: 'url(/products/hero-bg.jpg)',
           backgroundSize: 'cover',
@@ -212,28 +211,28 @@ export default function ProductsPage() {
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60" />
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-16 md:py-20 text-center md:text-left">
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 mt-12">
           <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">Our Catalogue</p>
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-balance">Explore Our Products</h1>
-          <p className="text-base md:text-lg text-primary-foreground/85 max-w-2xl md:mx-0 mx-auto leading-relaxed">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Explore Our Products</h1>
+          <p className="text-lg text-primary-foreground/85 max-w-2xl mx-auto leading-relaxed">
             From plywood and laminates to locks, hardware and decor — everything you need for your dream interior, all under one roof.
           </p>
         </div>
       </section>
 
       {/* Sticky Tab Navigation */}
-      <div className="sticky top-16 md:top-20 z-40 bg-card/95 backdrop-blur border-b border-border shadow-sm">
+      <div className="sticky top-20 z-40 bg-card/95 backdrop-blur border-b border-border shadow-sm">
         <div
           ref={tabsRef}
-          className="max-w-7xl mx-auto px-3 md:px-4 flex gap-1.5 md:gap-2 overflow-x-auto scrollbar-hide py-2.5 md:py-3"
+          className="max-w-7xl mx-auto px-4 flex gap-2 overflow-x-auto scrollbar-hide py-3"
         >
           {sections.map((s) => (
             <button
               key={s.id}
               data-tab={s.id}
               onClick={() => scrollToSection(s.id)}
-              className={`shrink-0 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium whitespace-nowrap transition cursor-pointer ${
+              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition cursor-pointer ${
                 activeId === s.id
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted text-foreground hover:bg-primary/10'
@@ -247,7 +246,7 @@ export default function ProductsPage() {
 
       {/* Sections */}
       <main className="bg-background">
-        <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-12 md:gap-20">
+        <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col gap-20">
           {sections.map((s, idx) => (
             <section
               key={s.id}
@@ -255,37 +254,32 @@ export default function ProductsPage() {
               ref={(el) => {
                 sectionRefs.current[s.id] = el
               }}
-              className="scroll-mt-32 md:scroll-mt-40"
+              className="scroll-mt-40"
             >
               <Reveal direction="up">
-                <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                   {/* Carousel — alternate sides on desktop */}
-                  {/* contain=true for sections with portrait/mixed-orientation images */}
                   <div className={idx % 2 === 1 ? 'lg:order-2' : ''}>
-                    <ProductCarousel
-                      images={s.images}
-                      label={s.title}
-                      contain={['decorative-products', 'decorative-handles', 'locks', 'hardware'].includes(s.id)}
-                    />
+                    <ProductCarousel images={s.images} label={s.title} />
                   </div>
 
                   {/* Text content */}
                   <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                    <p className="text-primary font-semibold tracking-widest uppercase text-xs md:text-sm mb-2">{s.tagline}</p>
-                    <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-3">{s.title}</h2>
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-3">{s.description}</p>
-
+                    <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">{s.tagline}</p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{s.title}</h2>
+                    <p className="text-muted-foreground text-base leading-relaxed mb-4">{s.description}</p>
+                    
                     {/* Expanded description for more detail */}
-                    <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-5 whitespace-pre-line">{s.fullDescription}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 whitespace-pre-line">{s.fullDescription}</p>
 
                     {/* Brands we deal with */}
-                    <div className="mb-6">
-                      <h3 className="text-xs md:text-sm font-semibold text-foreground uppercase tracking-wide mb-2">Brands we deal with</h3>
-                      <div className="flex flex-wrap gap-1.5">
+                    <div className="mb-8">
+                      <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide mb-3">Brands we deal with</h3>
+                      <div className="flex flex-wrap gap-2">
                         {s.brands.map((b) => (
                           <span
                             key={b}
-                            className="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-medium border border-primary/30"
+                            className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/30 hover:bg-primary/20 transition"
                           >
                             {b}
                           </span>
@@ -296,18 +290,18 @@ export default function ProductsPage() {
                     <div className="flex flex-col sm:flex-row gap-3">
                       <a
                         href={telHref}
-                        className="flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 bg-primary text-primary-foreground rounded font-semibold text-sm md:text-base hover:bg-accent transition"
+                        className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded font-semibold hover:bg-accent transition"
                       >
-                        <Phone size={16} />
+                        <Phone size={18} />
                         Enquire Now
                       </a>
                       <a
                         href={whatsappHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 border-2 border-primary text-primary rounded font-semibold text-sm md:text-base hover:bg-primary hover:text-primary-foreground transition"
+                        className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded font-semibold hover:bg-primary hover:text-primary-foreground transition"
                       >
-                        <WhatsAppIcon size={16} />
+                        <WhatsAppIcon size={18} />
                         WhatsApp
                       </a>
                     </div>
