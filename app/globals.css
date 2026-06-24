@@ -255,6 +255,54 @@ html {
   }
 }
 
+/* ===== Floating WhatsApp button: continuous attract animation ===== */
+@keyframes wa-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes wa-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.wa-float {
+  animation: wa-bounce 2.2s ease-in-out infinite;
+}
+
+/* Pulsing ring behind the button */
+.wa-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: rgb(34 197 94); /* green-500 */
+  z-index: -1;
+  animation: wa-ring 2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-float,
+  .wa-float::before {
+    animation: none !important;
+  }
+}
+
   .h-56 {
     height: calc(.44rem * 56);
   }

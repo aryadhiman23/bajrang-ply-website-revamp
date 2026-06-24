@@ -151,7 +151,7 @@ export function SiteFooter() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
-        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-40"
+        className="wa-float fixed bottom-5 right-5 md:bottom-6 md:right-6 w-14 h-14 md:w-16 md:h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-colors flex items-center justify-center z-40"
       >
         <WhatsAppIcon size={28} />
       </a>
