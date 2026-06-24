@@ -6,9 +6,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 interface ProductCarouselProps {
   images: string[]
   label: string
+  /** Pass true for sections whose images are portrait / mixed orientation */
+  contain?: boolean
 }
 
-export function ProductCarousel({ images, label }: ProductCarouselProps) {
+export function ProductCarousel({ images, label, contain = false }: ProductCarouselProps) {
   const [current, setCurrent] = useState(0)
   const total = images.length
 
@@ -25,7 +27,7 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
               key={src}
               src={src || '/placeholder.svg'}
               alt={`${label} — image ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${contain ? 'object-contain p-2' : 'object-cover'} ${
                 idx === current ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
             />
@@ -69,7 +71,7 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
                   idx === current ? 'ring-2 ring-primary opacity-100' : 'opacity-60 hover:opacity-100'
                 }`}
               >
-                <img src={src || '/placeholder.svg'} alt="" className="w-full h-full object-cover" />
+                <img src={src || '/placeholder.svg'} alt="" className={`w-full h-full ${contain ? 'object-contain p-1' : 'object-cover'}`} />
               </button>
             ))}
           </div>

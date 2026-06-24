@@ -260,8 +260,13 @@ export default function ProductsPage() {
               <Reveal direction="up">
                 <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
                   {/* Carousel — alternate sides on desktop */}
+                  {/* contain=true for sections with portrait/mixed-orientation images */}
                   <div className={idx % 2 === 1 ? 'lg:order-2' : ''}>
-                    <ProductCarousel images={s.images} label={s.title} />
+                    <ProductCarousel
+                      images={s.images}
+                      label={s.title}
+                      contain={['decorative-products', 'decorative-handles', 'locks', 'hardware'].includes(s.id)}
+                    />
                   </div>
 
                   {/* Text content */}
