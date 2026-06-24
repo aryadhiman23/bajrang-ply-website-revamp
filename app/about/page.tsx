@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/scroll-animations'
 import { siteConfig } from '@/lib/site-config'
+import type { Metadata } from 'next'
 
 const tabs = [
   { id: 'overview', label: 'Overview' },
@@ -30,6 +31,12 @@ const productCategories = [
   'Adhesives',
   'Decorative Interior Materials',
 ]
+
+// In /about page
+export const metadata: Metadata = {
+  title: "About Us — Est. 2013 | Bajrang Plywood Lucknow",
+  description: "Founded in 2013 by Mr. Anmol Agarwal, Bajrang Plywood is North India's trusted supplier of premium interior materials. Serving UP, Uttarakhand & beyond.",
+}
 
 export default function AboutPage() {
   const [activeId, setActiveId] = useState(tabs[0].id)
@@ -373,9 +380,3 @@ export default function AboutPage() {
   )
 }
 
-
-// In /about page
-export const metadata = {
-  title: "About Us — Est. 2013 | Bajrang Plywood Lucknow",
-  description: "Founded in 2013 by Mr. Anmol Agarwal, Bajrang Plywood is North India's trusted supplier of premium interior materials. Serving UP, Uttarakhand & beyond.",
-}

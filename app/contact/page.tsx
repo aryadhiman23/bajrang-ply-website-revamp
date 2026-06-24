@@ -5,6 +5,7 @@ import { Phone, MapPin, Clock, Mail } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { siteConfig, telHref, whatsappHref, mapHref } from '@/lib/site-config'
+import type { Metadata } from 'next'
 
 /* Brand glyph for WhatsApp */
 function WhatsAppIcon({ size = 18, className }: { size?: number; className?: string }) {
@@ -15,6 +16,12 @@ function WhatsAppIcon({ size = 18, className }: { size?: number; className?: str
   )
 }
 
+// In /contact page
+export const metadata: Metadata = {
+  title: 'Contact Us — Lucknow Showroom | Bajrang Plywood',
+  description:
+    'Contact Bajrang Plywood in Lucknow — call, WhatsApp, or visit our store at 586 Bara Birwa, Kanpur Road.',
+}
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -266,9 +273,4 @@ export default function ContactPage() {
   )
 }
 
-// In /contact page
-export const metadata = {
-  title: "Contact Us — Lucknow Showroom | Bajrang Plywood",
-  description: "Contact Bajrang Plywood in Lucknow — call, WhatsApp, or visit our store at 586 Bara Birwa, Kanpur Road. Open Mon–Sun, 10 AM to 8 PM.",
-}
 

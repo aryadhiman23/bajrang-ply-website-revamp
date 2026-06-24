@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { ProductCarousel } from '@/components/product-carousel'
 import { Reveal } from '@/components/scroll-animations'
 import { telHref, whatsappHref } from '@/lib/site-config'
+import type { Metadata } from 'next'
 
 /* Brand glyph for WhatsApp */
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
@@ -141,6 +142,12 @@ const sections: Section[] = [
     images: range('edge-banding', [1, 2]),
   },
 ]
+
+// In /products page (app/products/page.tsx)
+export const metadata:Metadata = {
+  title: "Our Products — Plywood, Laminates, Hardware | Bajrang Plywood",
+  description: "Shop plywood, laminates, HDHMR, MDF, hardware, locks & edge banding at Bajrang Plywood Lucknow. Brands: Century Ply, Greenlam, Hettich, Godrej & more.",
+}
 
 export default function ProductsPage() {
   const [activeId, setActiveId] = useState(sections[0].id)
@@ -316,11 +323,4 @@ export default function ProductsPage() {
       <SiteFooter />
     </>
   )
-}
-
-
-// In /products page (app/products/page.tsx)
-export const metadata = {
-  title: "Our Products — Plywood, Laminates, Hardware | Bajrang Plywood",
-  description: "Shop plywood, laminates, HDHMR, MDF, hardware, locks & edge banding at Bajrang Plywood Lucknow. Brands: Century Ply, Greenlam, Hettich, Godrej & more.",
 }
