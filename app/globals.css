@@ -218,9 +218,18 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: clip;
   }
   html {
     @apply font-sans;
+    /*
+      Permanent guard against horizontal overflow (e.g. scroll-reveal
+      elements that start translated on the X axis, or a horizontally
+      scrollable tab bar leaking its width). The clip/hidden lives on the
+      ROOT scroll element so it stops the page from scrolling sideways
+      while keeping vertical scroll AND `position: sticky` working.
+    */
+    overflow-x: hidden;
   }
 }
 
