@@ -59,14 +59,14 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
 
         {/* Thumbnails */}
         {total > 1 && (
-          <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+          <div className="flex gap-1.5 md:gap-2 mt-3 overflow-x-auto pb-1 scrollbar-hide">
             {images.map((src, idx) => (
               <button
                 key={src}
                 onClick={() => setCurrent(idx)}
                 aria-label={`Go to image ${idx + 1}`}
-                className={`shrink-0 w-20 h-20 rounded-lg overflow-hidden transition ${
-                  idx === current ? '' : 'opacity-60 hover:opacity-100'
+                className={`shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-lg overflow-hidden transition ${
+                  idx === current ? 'ring-2 ring-primary' : 'opacity-60 hover:opacity-100'
                 }`}
               >
                 <img src={src || '/placeholder.svg'} alt="" className="w-full h-full object-contain" />
