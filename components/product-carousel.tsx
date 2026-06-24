@@ -59,7 +59,7 @@ export function ProductCarousel({ images, label }: ProductCarouselProps) {
 
         {/* Thumbnails */}
         {total > 1 && (
-          <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+          <div className="flex gap-2 mt-4 overflow-x-auto pb-2 flex-wrap justify-center">
             {images.map((src, idx) => (
               <button
                 key={src}
