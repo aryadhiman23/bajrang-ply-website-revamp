@@ -27,7 +27,7 @@ export function ProductCarousel({ images, label, contain = false }: ProductCarou
               key={src}
               src={src || '/placeholder.svg'}
               alt={`${label} — image ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${contain ? 'object-contain p-2' : 'object-cover'} ${
+              className={`absolute inset-0 w-screen md:w-full h-full transition-opacity duration-500 ${contain ? 'object-contain p-2' : 'object-cover'} ${
                 idx === current ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
             />
