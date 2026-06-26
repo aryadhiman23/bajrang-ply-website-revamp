@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Home from "./home";
 
 export const metadata: Metadata = {
-  title: "Bajrang Plywood | Premium Interior Materials in Lucknow",
+  title: "Home | Bajrang Plywood",
   description:
     "Premium plywood, laminates, veneers & hardware in Lucknow. 13+ years, 1000+ variants.",
 };
