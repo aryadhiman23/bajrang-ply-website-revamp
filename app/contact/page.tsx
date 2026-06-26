@@ -16,12 +16,6 @@ function WhatsAppIcon({ size = 18, className }: { size?: number; className?: str
   )
 }
 
-// In /contact page
-export const metadata: Metadata = {
-  title: 'Contact Us — Lucknow Showroom | Bajrang Plywood',
-  description:
-    'Contact Bajrang Plywood in Lucknow — call, WhatsApp, or visit our store at 586 Bara Birwa, Kanpur Road.',
-}
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',

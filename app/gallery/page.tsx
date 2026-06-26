@@ -35,11 +35,6 @@ const galleryItems = [
 
 const categories = ['All', 'Kitchen', 'Wardrobe', 'Living Room', 'Bathroom', 'Furniture', 'Commercial']
 
-// In /gallery page
-export const metadata:Metadata = {
-  title: "Project Gallery — Kitchen, Wardrobe & Interiors | Bajrang Plywood",
-  description: "See real kitchen, wardrobe, living room & office projects completed using Bajrang Plywood materials. Get inspired for your next interior design project.",
-}
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')

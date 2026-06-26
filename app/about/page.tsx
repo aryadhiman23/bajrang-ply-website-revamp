@@ -32,12 +32,6 @@ const productCategories = [
   'Decorative Interior Materials',
 ]
 
-// In /about page
-export const metadata: Metadata = {
-  title: "About Us — Est. 2013 | Bajrang Plywood Lucknow",
-  description: "Founded in 2013 by Mr. Anmol Agarwal, Bajrang Plywood is North India's trusted supplier of premium interior materials. Serving UP, Uttarakhand & beyond.",
-}
-
 export default function AboutPage() {
   const [activeId, setActiveId] = useState(tabs[0].id)
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})

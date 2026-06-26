@@ -143,12 +143,6 @@ const sections: Section[] = [
   },
 ]
 
-// In /products page (app/products/page.tsx)
-export const metadata:Metadata = {
-  title: "Our Products — Plywood, Laminates, Hardware | Bajrang Plywood",
-  description: "Shop plywood, laminates, HDHMR, MDF, hardware, locks & edge banding at Bajrang Plywood Lucknow. Brands: Century Ply, Greenlam, Hettich, Godrej & more.",
-}
-
 export default function ProductsPage() {
   const [activeId, setActiveId] = useState(sections[0].id)
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
