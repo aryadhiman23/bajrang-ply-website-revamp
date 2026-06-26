@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import GalleryPage from "./gallerypage";
 
 export const metadata: Metadata = {
-  title: "Project Gallery",
+  title: "Gallery",
   description:
     "See real kitchen, wardrobe, living room & office projects completed using Bajrang Plywood materials.",
 };
