@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { ProductCarousel } from '@/components/product-carousel'
 import { Reveal } from '@/components/scroll-animations'
 import { telHref, whatsappHref } from '@/lib/site-config'
+import type { Metadata } from 'next'
 
 /* Brand glyph for WhatsApp */
 function WhatsAppIcon({ size = 18 }: { size?: number }) {

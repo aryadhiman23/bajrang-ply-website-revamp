@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { X } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
-
+import type { Metadata } from 'next'
 const galleryItems = [
   { id: 1, title: 'Modern Kitchen Design', category: 'Kitchen', image: '/images/gallery-01.jpg', desc: 'Premium plywood cabinets with glossy laminates' },
   { id: 2, title: 'Bedroom Wardrobe', category: 'Wardrobe', image: '/images/gallery-02.jpg', desc: 'Floor-to-ceiling birch plywood wardrobe' },
@@ -34,6 +34,7 @@ const galleryItems = [
 ]
 
 const categories = ['All', 'Kitchen', 'Wardrobe', 'Living Room', 'Bathroom', 'Furniture', 'Commercial']
+
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -158,3 +159,4 @@ export default function GalleryPage() {
     </>
   )
 }
+

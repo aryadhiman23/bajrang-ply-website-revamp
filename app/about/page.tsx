@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { Reveal } from '@/components/scroll-animations'
 import { siteConfig } from '@/lib/site-config'
+import type { Metadata } from 'next'
 
 const tabs = [
   { id: 'overview', label: 'Overview' },
@@ -372,3 +373,4 @@ export default function AboutPage() {
     </>
   )
 }
+
