@@ -10,11 +10,18 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.ico',
+  title: {
+    default: "Bajrang Plywood",
+    template: "%s | Bajrang Plywood",
   },
-}
+  description:
+    "One-stop shop for plywood, laminates, veneers, hardware & decorative interior materials in Lucknow.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+};
+
 
 export const viewport: Viewport = {
   colorScheme: 'light',
